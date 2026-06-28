@@ -1,7 +1,7 @@
 ---
-title: "Lua Exports von KT Extra Menu nutzen"
+title: "KT Extra Menu Lua Exports: Menü programmatisch öffnen"
 sidebarTitle: "Lua Exports"
-description: "KT Extra Menu stellt drei Lua Exports bereit, mit denen andere Scripts das Menü programmatisch öffnen können: OpenVehicleMenu, OpenLiveryMenu und OpenExtrasMenu."
+description: "KT Extra Menu bietet drei Lua Exports, mit denen andere Ressourcen das Menü programmatisch öffnen können – ideal für ox_target oder qb-target."
 ---
 
 Exports erlauben es anderen Ressourcen auf deinem Server, das KT Extra Menu **programmatisch** aufzurufen — ohne dass der Spieler einen Chat-Befehl eingeben oder eine Taste drücken muss. Das ist besonders nützlich, wenn du das Menü aus einem Interaktions-Script (z. B. `ox_target`, `qb-target`) heraus öffnen möchtest oder eigene Trigger-Logik benötigst.
@@ -66,7 +66,7 @@ exports['kt_extra_menu']:OpenExtrasMenu()
 </Note>
 
 <Note>
-  `OpenLiveryMenu` und `OpenExtrasMenu` ermitteln das Fahrzeug des Spielers **automatisch** über `GetPlayerVehicle()`. Du musst das Fahrzeug-Handle nicht selbst übergeben. Sitzt der Spieler in keinem Fahrzeug, tut der Export nichts.
+  `OpenLiveryMenu` und `OpenExtrasMenu` ermitteln das aktuelle Fahrzeug des Spielers **automatisch**. Du musst kein Fahrzeug-Handle übergeben. Sitzt der Spieler in keinem Fahrzeug, tut der Export nichts.
 </Note>
 
 ## NetEvent als Alternative
