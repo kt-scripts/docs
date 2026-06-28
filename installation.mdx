@@ -1,0 +1,75 @@
+---
+title: "KT Extra Menu installieren – Schritt-für-Schritt Anleitung"
+sidebarTitle: "Installation"
+description: "Installiere KT Extra Menu auf deinem FiveM-Server in wenigen Minuten: Script entpacken, in server.cfg eintragen und starten."
+---
+
+Die Installation von KT Extra Menu ist unkompliziert und in wenigen Minuten abgeschlossen. Du entpackst das Script in deinen `resources`-Ordner, trägst es in die `server.cfg` ein, wählst dein Framework in der `config.lua` und startest den Server neu. Voraussetzung ist eine laufende **ox\_lib**-Instanz auf deinem Server.
+
+## Voraussetzungen
+
+<Note>
+  **ox\_lib** muss auf deinem Server installiert und aktiv sein, bevor du KT Extra Menu einrichten kannst. Lade ox\_lib von [github.com/overextended/ox_lib](https://github.com/overextended/ox_lib) herunter und stelle sicher, dass es in der `server.cfg` **vor** `kt_extra_menu` gestartet wird.
+</Note>
+
+## Installationsschritte
+
+<Steps>
+  <Step title="Script herunterladen und entpacken">
+    Lade das aktuelle Release von KT Extra Menu aus dem [Lation Scripts Discord](https://discord.gg/A6UgrEhc8G) herunter. Entpacke das Archiv in den `resources`-Ordner deines FiveM-Servers.
+
+    Nach dem Entpacken sollte die Ordnerstruktur wie folgt aussehen:
+
+    ```
+    resources/
+    └── kt_extra_menu/
+        ├── client/
+        │   └── main.lua
+        ├── server/
+        │   ├── main.lua
+        │   └── version.lua
+        ├── locales/
+        │   ├── de.lua
+        │   └── en.lua
+        ├── config.lua
+        └── fxmanifest.lua
+    ```
+
+    <Warning>
+      Achte darauf, dass der Ordnername exakt `kt_extra_menu` lautet (keine Versionsnummer im Ordnernamen), da der `ensure`-Eintrag in der `server.cfg` genau diesen Namen erwartet.
+    </Warning>
+  </Step>
+
+  <Step title="In server.cfg eintragen">
+    Öffne die `server.cfg` deines FiveM-Servers und trage die folgenden `ensure`-Einträge ein. **ox\_lib muss zwingend vor kt\_extra\_menu stehen.**
+
+    ```cfg
+    ensure ox_lib
+    ensure kt_extra_menu
+    ```
+
+    <Warning>
+      Wenn `ox_lib` erst **nach** `kt_extra_menu` gestartet wird, kommt es zu Laufzeitfehlern, da das Script beim Start bereits auf ox\_lib-Funktionen zugreift. Überprüfe die Reihenfolge sorgfältig.
+    </Warning>
+  </Step>
+
+  <Step title="config.lua öffnen und Framework auswählen">
+    Öffne die Datei `resources/kt_extra_menu/config.lua` in einem Texteditor deiner Wahl. Passe mindestens den Wert für `Config.Framework` an dein verwendetes Framework an:
+
+    ```lua
+    Config.Framework = 'esx'      -- 'esx' | 'qbcore' | 'qbox' | 'standalone'
+    ```
+
+    Weitere Konfigurationsoptionen wie Menü-System, Sprache, Befehlsnamen und Job-Einschränkungen kannst du ebenfalls direkt in dieser Datei anpassen. Detaillierte Informationen dazu findest du im Abschnitt **Konfiguration**.
+  </Step>
+
+  <Step title="Server neu starten">
+    Starte deinen FiveM-Server vollständig neu (oder führe `restart kt_extra_menu` in der Serverkonsole aus, falls der Server bereits läuft und du nur die Konfiguration geändert hast).
+
+    Überprüfe anschließend die Serverkonsole auf Fehlermeldungen. Bei erfolgreicher Installation erscheint eine Bestätigungsmeldung von KT Extra Menu inklusive der aktuellen Versionsnummer.
+  </Step>
+</Steps>
+
+## Nächste Schritte
+
+Nach erfolgreicher Installation empfehlen wir, den [Quickstart](/quickstart) durchzugehen, um das Script mit deinem Framework zu konfigurieren und direkt im Spiel zu testen.

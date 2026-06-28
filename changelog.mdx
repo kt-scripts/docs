@@ -1,0 +1,79 @@
+---
+title: "KT Extra Menu Changelog – Versionsübersicht"
+sidebarTitle: "Changelog"
+description: "Alle Änderungen und neuen Funktionen von KT Extra Menu im Überblick. Aktuelle Version: 1.0.0."
+---
+
+Hier findest du eine vollständige Übersicht aller Versionen von **KT Extra Menu** – mit allen Neuerungen, Verbesserungen und Fehlerbehebungen. Die aktuellste Version steht immer ganz oben.
+
+<Note>
+  KT Extra Menu prüft beim Serverstart automatisch, ob eine neuere Version verfügbar ist, und gibt einen entsprechenden Hinweis in der Server-Konsole aus. Der Check erfolgt alle 60 Minuten wiederholt. Stelle sicher, dass dein Server ausgehende HTTP-Verbindungen erlaubt, damit diese Funktion korrekt arbeitet.
+</Note>
+
+---
+
+## Version 1.0.0
+
+**Erstveröffentlichung** — Initiales Release von KT Extra Menu.
+
+### ✨ Neue Funktionen
+
+- **Multi-Framework-Unterstützung**
+  Volle Kompatibilität mit **ESX**, **QBCore**, **QBox** und **Standalone**. Das Framework wird einmalig in `Config.Framework` konfiguriert.
+
+- **Zwei Menüsysteme: ox\_lib & Lation Modern UI**
+  Wähle zwischen dem ox\_lib Context Menu (`Config.MenuSystem = 'ox'`) und dem optionalen Lation Scripts Modern UI (`Config.MenuSystem = 'lation'`). Beide Systeme bieten eine saubere, performante Oberfläche.
+
+- **Radial-Menü-Integration**
+  Nahtlose Integration in das **ox\_lib Radial Menu** sowie in das **qb-radialmenu**. Umschaltbar über `Config.UseRadial` und `Config.OxRadial`.
+
+- **Benutzerdefinierte Livery-Namen**
+  Vergib eigene Bezeichnungen für Liveries einzelner Fahrzeugmodelle direkt in der Konfiguration. Der Modellname muss in Kleinbuchstaben angegeben werden:
+
+  ```lua
+  Config.CustomLiveryNames = {
+      ['police'] = {
+          [0] = 'LSPD Schwarz/Weiß',
+          [1] = 'LSPD Slicktop',
+          [2] = 'Sheriff',
+      },
+      ['ambulance'] = {
+          [0] = 'Los Santos Medical',
+          [1] = 'Feuerwehr',
+      },
+  }
+  ```
+
+- **Job-Einschränkungen**
+  Beschränke den Zugriff auf das Menü auf bestimmte Jobs. Kompatibel mit allen unterstützten Frameworks. Bei `standalone` werden Job-Checks übersprungen:
+
+  ```lua
+  Config.RequiredJob = { 'mechanic', 'police' }
+  ```
+
+- **Mehrsprachigkeit (Deutsch & Englisch)**
+  Sprache umschaltbar per `Config.Language = 'de'` oder `'en'`. Alle Menütexte und Benachrichtigungen sind vollständig übersetzt.
+
+- **Automatischer Versions-Check**
+  Beim Serverstart wird automatisch die neueste Version abgefragt. Ist ein Update verfügbar, erscheint ein farbiger Hinweis in der Server-Konsole mit der aktuellen und der neuesten Versionsnummer sowie einem Download-Link.
+
+- **Lua Exports für externe Scripts**
+  Die aktuelle Skriptversion kann über einen Export abgerufen werden:
+
+  ```lua
+  local version = exports['kt_extra_menu']:GetVersion()
+  print('KT Extra Menu Version: ' .. version)
+  ```
+
+- **Leichtgewichtig und optimiert**
+  Das Script läuft ressourcenschonend und verursacht keine spürbaren Performance-Einbußen. Extras werden automatisch in den Slots 0–20 gescannt.
+
+---
+
+## Support & Updates
+
+Bleib über neue Versionen informiert und erhalte Support im offiziellen Discord:
+
+<Card title="Lation Scripts Discord" icon="discord" href="https://discord.gg/A6UgrEhc8G">
+  Tritt dem Discord bei für Support, Update-Ankündigungen und Community-Austausch.
+</Card>

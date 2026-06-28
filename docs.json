@@ -1,72 +1,61 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Lation Scripts",
+  "theme": "almond",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#da3433",
+    "light": "#702324",
+    "dark": "#1c1c23"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "https://media.brand.dev/1be74dd6-099e-407c-8143-51d5ded19a10.png",
+  "appearance": {
+    "default": "dark"
+  },
   "navigation": {
-    "pages": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
+        "tab": "Dokumentation",
+        "groups": [
+          {
+            "group": "Einstieg",
+            "pages": [
+              "introduction",
+              "installation",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Konfiguration",
+            "pages": [
+              "configuration/basic",
+              "configuration/radial-menu",
+              "configuration/livery-names",
+              "configuration/ui-settings"
+            ]
+          },
+          {
+            "group": "Verwendung",
+            "pages": [
+              "usage/commands",
+              "usage/job-restrictions",
+              "usage/exports"
+            ]
+          },
+          {
+            "group": "Hilfe",
+            "pages": [
+              "troubleshooting",
+              "changelog"
+            ]
+          }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
     ]
   },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/kt-scripts"
     }
   }
 }

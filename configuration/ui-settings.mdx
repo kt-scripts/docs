@@ -1,0 +1,88 @@
+---
+title: "UI-Einstellungen für ox_lib und Lation Modern UI"
+sidebarTitle: "UI-Einstellungen"
+description: "Passe Titel und Untertitel des KT Extra Menu Menüfensters an und wähle zwischen ox_lib Context Menu und Lation Modern UI."
+---
+
+KT Extra Menu unterstützt zwei Menü-Systeme: das weit verbreitete **ox_lib Context Menu** und das **Lation Scripts Modern UI** für ein ansprechenderes, moderneres Erscheinungsbild. Welches System du verwendest, hängt von den auf deinem Server installierten Ressourcen und deinen gestalterischen Vorlieben ab. Beide Systeme verwenden dieselben Konfigurationsoptionen für Zugangsbeschränkungen und Benachrichtigungen – lediglich das Erscheinungsbild und einige UI-spezifische Einstellungen unterscheiden sich.
+
+## Menü-System auswählen
+
+<Tabs>
+  <Tab title="ox_lib (Standard)">
+    Das **ox_lib Context Menu** ist die Standardoption und benötigt keine zusätzliche Installation, da `ox_lib` bereits eine Pflicht-Abhängigkeit von KT Extra Menu ist.
+
+    ```lua
+    Config.MenuSystem = 'ox'
+    ```
+
+    Benachrichtigungen werden über das integrierte `lib.notify`-System von ox_lib ausgegeben. Die Position der Benachrichtigungen lässt sich über `Config.Notifications.position` steuern:
+
+    | Wert | Bildschirmposition |
+    |------|-------------------|
+    | `'top-right'` | Oben rechts *(Standard)* |
+    | `'top-left'` | Oben links |
+    | `'bottom-right'` | Unten rechts |
+    | `'bottom-left'` | Unten links |
+
+    ```lua
+    Config.Notifications = {
+        duration = 3000,
+        position = 'top-right'
+    }
+    ```
+  </Tab>
+  <Tab title="Lation Modern UI">
+    Das **Lation Modern UI** bietet eine optisch aufgewertete Benutzeroberfläche mit eigenem Header und Subheader im Menüfenster.
+
+    <Warning>
+      Lation Modern UI erfordert die separate Ressource **modernui** von Lation Scripts. Diese muss installiert und in der `server.cfg` gestartet sein, bevor `kt_extra_menu` geladen wird. Ohne diese Ressource führt `Config.MenuSystem = 'lation'` zu Fehlern.
+    </Warning>
+
+    ```lua
+    Config.MenuSystem = 'lation'
+
+    Config.LationUI = {
+        header = 'Vehicle Customization',
+        subheader = 'Customize your vehicle',
+    }
+    ```
+
+    **Starte-Reihenfolge in `server.cfg`:**
+
+    ```cfg
+    ensure ox_lib
+    ensure modernui
+    ensure kt_extra_menu
+    ```
+
+    <ParamField path="Config.LationUI.header" type="string" default="'Vehicle Customization'">
+      Großer Titeltext, der oben im Lation Modern UI Menüfenster angezeigt wird.
+    </ParamField>
+
+    <ParamField path="Config.LationUI.subheader" type="string" default="'Customize your vehicle'">
+      Kleinerer Untertitel unterhalb des Haupttitels im Menüfenster. Eignet sich für eine kurze Beschreibung oder einen Server-Namen.
+    </ParamField>
+  </Tab>
+</Tabs>
+
+---
+
+## Benachrichtigungseinstellungen
+
+Die folgenden Optionen steuern das Aussehen und die Dauer von Benachrichtigungen. Sie gelten für beide Menü-Systeme, wobei die `position`-Option nur bei `Config.MenuSystem = 'ox'` berücksichtigt wird.
+
+<ParamField path="Config.Notifications.duration" type="number" default="3000">
+  Anzeigedauer der Benachrichtigung in Millisekunden. `3000` entspricht 3 Sekunden. Erhöhe diesen Wert, wenn Spieler die Meldungen häufig verpassen.
+</ParamField>
+
+<ParamField path="Config.Notifications.position" type="string" default="'top-right'">
+  Bildschirmposition der Benachrichtigungen. Nur wirksam bei `Config.MenuSystem = 'ox'`. Mögliche Werte: `'top-right'`, `'top-left'`, `'bottom-right'`, `'bottom-left'`.
+</ParamField>
+
+```lua
+Config.Notifications = {
+    duration = 3000,
+    position = 'top-right'
+}
+```

@@ -1,0 +1,81 @@
+{
+  "projectType": "saas",
+  "projectName": "KT Extra Menu",
+  "projectDescription": "A FiveM script that adds an in-game vehicle customization menu for managing liveries and extras, with support for multiple frameworks, menu systems, and radial menu integration.",
+  "theme": "almond",
+  "primaryColor": "#da3433",
+  "lightColor": "#702324",
+  "darkColor": "#1c1c23",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Dokumentation",
+        "groups": [
+          {
+            "group": "Einstieg",
+            "pages": [
+              "introduction",
+              "installation",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Konfiguration",
+            "pages": [
+              "configuration/basic",
+              "configuration/radial-menu",
+              "configuration/livery-names",
+              "configuration/ui-settings"
+            ]
+          },
+          {
+            "group": "Verwendung",
+            "pages": [
+              "usage/commands",
+              "usage/job-restrictions",
+              "usage/exports"
+            ]
+          },
+          {
+            "group": "Hilfe",
+            "pages": [
+              "troubleshooting",
+              "changelog"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Livery selection menu with custom livery names per vehicle model",
+    "Vehicle extras toggle (on/off) for up to 20 extras",
+    "Multi-framework support: ESX, QBCore, QBox, Standalone",
+    "Menu system choice: ox_lib Context Menu or Lation Modern UI",
+    "Radial menu integration: ox_lib Radial or qb-radialmenu",
+    "Job-based access restrictions",
+    "Configurable keybind and command",
+    "English and German language support",
+    "Lua exports for integration with other scripts",
+    "Automatic version update notifications"
+  ],
+  "publicApiSurface": [
+    "exports('OpenVehicleMenu', OpenMainMenu)",
+    "exports('OpenLiveryMenu', ...)",
+    "exports('OpenExtrasMenu', ...)",
+    "RegisterCommand(Config.Command, ...) — default: /vehiclemenu",
+    "RegisterKeyMapping — default: F11",
+    "Config.Framework — 'esx' | 'qbcore' | 'qbox' | 'standalone'",
+    "Config.MenuSystem — 'ox' | 'lation'",
+    "Config.UseRadial — bool",
+    "Config.OxRadial — bool",
+    "Config.RequiredJob — table of job names",
+    "Config.CustomLiveryNames — per-model livery name table",
+    "Config.Keybind — key string or false",
+    "Config.Command — string",
+    "Config.OnlyDriver — bool",
+    "Config.CloseMenuAfterSelection — bool",
+    "Config.Notifications.duration / position",
+    "Config.LationUI.header / subheader"
+  ]
+}

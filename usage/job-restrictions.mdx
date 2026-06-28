@@ -1,0 +1,71 @@
+---
+title: "Job-Einschränkungen für KT Extra Menu einrichten"
+sidebarTitle: "Job-Einschränkungen"
+description: "Begrenze den Zugriff auf das KT Extra Menu auf bestimmte Jobs wie Mechaniker, Polizei oder Sanitäter mit Config.RequiredJob."
+---
+
+KT Extra Menu unterstützt eine jobbasierte Zugriffskontrolle. Damit kannst du das Menü auf bestimmte Berufsgruppen — z. B. Mechaniker, Polizei oder Sanitäter — beschränken, anstatt es allen Spielern zugänglich zu machen. Die gesamte Logik wird über einen einzigen Konfigurationswert gesteuert: `Config.RequiredJob`.
+
+## Standardverhalten
+
+Standardmäßig ist `Config.RequiredJob` eine **leere Tabelle**. Das bedeutet: **jeder Spieler** darf das Menü öffnen, unabhängig von seinem Job.
+
+```lua
+-- Alle Spieler dürfen das Menü nutzen (Standard)
+Config.RequiredJob = {}
+```
+
+Sobald mindestens ein Job in der Liste steht, wird der Zugriff auf genau diese Jobs eingeschränkt. Spieler mit einem anderen Job erhalten die Meldung *„Du hast keine Berechtigung!"*.
+
+## Job-Einschränkungen konfigurieren
+
+### Nur einen Job erlauben
+
+```lua
+-- Nur Mechaniker dürfen das Menü öffnen
+Config.RequiredJob = {'mechanic'}
+```
+
+### Mehrere Jobs erlauben
+
+```lua
+-- Mechaniker, Polizei und Sanitäter dürfen das Menü öffnen
+Config.RequiredJob = {'mechanic', 'police', 'ambulance'}
+```
+
+### Alle Spieler erlauben (Standard)
+
+```lua
+-- Keine Einschränkung – jeder darf das Menü nutzen
+Config.RequiredJob = {}
+```
+
+<Note>
+  Die Job-Namen müssen **exakt** mit den Job-Namen in deinem Framework übereinstimmen. Bei ESX sind das die `name`-Felder aus der `jobs`-Datenbanktabelle; bei QBCore/QBox sind es die Schlüssel in `QBShared.Jobs`. Groß- und Kleinschreibung sowie Leerzeichen werden dabei geprüft.
+</Note>
+
+<Note>
+  Wird `Config.Framework = 'standalone'` verwendet, werden Job-Einschränkungen **ignoriert** — jeder Spieler gilt automatisch als berechtigt, unabhängig vom Inhalt von `Config.RequiredJob`.
+</Note>
+
+## Nur Fahrer – Config.OnlyDriver
+
+Unabhängig von der Job-Prüfung kannst du den Zugriff zusätzlich auf den **Fahrersitz** einschränken. Wenn `Config.OnlyDriver = true` gesetzt ist, können ausschließlich Spieler auf dem Fahrersitz (Sitz -1) das Menü öffnen. Beifahrer erhalten die Meldung *„Du musst der Fahrer sein!"*.
+
+```lua
+Config.OnlyDriver = true  -- nur der Fahrer darf das Menü öffnen
+Config.OnlyDriver = false -- alle Insassen dürfen das Menü öffnen (Standard)
+```
+
+Diese Einstellung greift **vor** der Job-Prüfung: Ist der Spieler kein Fahrer, wird das Menü sofort verweigert, ohne dass der Job überhaupt geprüft wird.
+
+<Tip>
+  Kombiniere `Config.OnlyDriver = true` mit einem eingeschränkten `Config.RequiredJob`, um das Menü nur für den Fahrer eines bestimmten Dienstfahrzeugs freizugeben — zum Beispiel nur für den Fahrer eines Mechaniker-Einsatzfahrzeugs:
+
+  ```lua
+  Config.OnlyDriver    = true
+  Config.RequiredJob   = {'mechanic'}
+  ```
+
+  So können weder Beifahrer noch spieler anderer Berufe das Menü öffnen.
+</Tip>

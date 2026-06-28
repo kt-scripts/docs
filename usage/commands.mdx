@@ -1,0 +1,107 @@
+---
+title: "Befehle und Tastenkürzel in KT Extra Menu"
+sidebarTitle: "Befehle"
+description: "Übersicht aller Chat-Befehle und Tastenkürzel von KT Extra Menu sowie Anleitung zur Anpassung in der config.lua."
+---
+
+KT Extra Menu lässt sich auf mehrere Arten öffnen: per Chat-Befehl, per Tastenkürzel oder über ein Radial Menu. Alle Methoden sind zentral in der `config.lua` konfigurierbar — ohne eine einzige Zeile Skript-Code anfassen zu müssen.
+
+## Chat-Befehle
+
+| Befehl | Beschreibung |
+|---|---|
+| `/vehiclemenu` | Öffnet das Fahrzeug-Anpassungsmenü (Liveries & Extras) |
+
+Der Standard-Befehlsname ist `vehiclemenu`. Er kann jederzeit über `Config.Command` in der `config.lua` geändert werden:
+
+```lua
+Config.Command = 'vehiclemenu' -- beliebigen Namen eintragen
+```
+
+<Note>
+  Der Befehl ist immer aktiv, unabhängig davon ob ein Tastenkürzel oder das Radial Menu aktiviert ist.
+</Note>
+
+## Tastenkürzel (Keybind)
+
+Das Standard-Tastenkürzel zum Öffnen des Menüs ist **F11**. Es wird automatisch in GTA V registriert, sobald der Server startet.
+
+```lua
+Config.Keybind = 'F11'  -- beliebige Taste eintragen, z. B. 'F9', 'F10', 'HOME'
+Config.Keybind = false  -- Tastenkürzel vollständig deaktivieren
+```
+
+<Warning>
+  Das Tastenkürzel wird **nur registriert, wenn `Config.UseRadial = false`** gesetzt ist. Sobald das Radial Menu aktiviert wird, hat `Config.Keybind` keine Wirkung.
+</Warning>
+
+Spieler können ihre persönliche Belegung jederzeit selbst anpassen:
+
+<Steps>
+  <Step title="GTA V Einstellungen öffnen">
+    Im Spiel das Pausenmenü öffnen und zu **Einstellungen → Tastatur / Controller** navigieren.
+  </Step>
+  <Step title="Ressource suchen">
+    In der Tastenbelegungsliste nach dem Ressourcennamen **`kt_extra_menu`** suchen.
+  </Step>
+  <Step title="Taste neu belegen">
+    Die gewünschte Aktion auswählen und eine neue Taste zuweisen. Die individuelle Belegung wird clientseitig gespeichert und überschreibt den Server-Standard.
+  </Step>
+</Steps>
+
+## Vollständige Konfiguration – Befehl & Tastenkürzel
+
+```lua
+-- Chat-Befehl zum Öffnen des Menüs
+Config.Command = 'vehiclemenu'
+
+-- Tastenkürzel (nur aktiv wenn Config.UseRadial = false)
+-- Auf false setzen, um das Tastenkürzel zu deaktivieren
+Config.Keybind = 'F11'
+```
+
+## Menü öffnen – alle Methoden
+
+<Tabs>
+  <Tab title="Befehl">
+    Tippe den folgenden Befehl im Chat ein, während du in einem Fahrzeug sitzt:
+
+    ```
+    /vehiclemenu
+    ```
+
+    Der Befehlsname kann in der `config.lua` über `Config.Command` angepasst werden. Der Befehl steht immer zur Verfügung, egal ob Radial Menu oder Tastenkürzel aktiv ist.
+  </Tab>
+  <Tab title="Tastenkürzel">
+    Drücke **F11** (oder die in `Config.Keybind` hinterlegte Taste), um das Menü zu öffnen.
+
+    ```lua
+    Config.Keybind = 'F11'
+    ```
+
+    Spieler können die Taste individuell in den GTA V-Einstellungen unter dem Ressourcennamen **`kt_extra_menu`** neu belegen. Das Tastenkürzel ist nur verfügbar, wenn `Config.UseRadial = false`.
+  </Tab>
+  <Tab title="Radial Menu">
+    Wenn `Config.UseRadial = true` gesetzt ist, erscheint ein Eintrag **„Fahrzeug Anpassung"** im Radial Menu, sobald der Spieler in einem Fahrzeug sitzt und die nötigen Berechtigungen hat.
+
+    ```lua
+    Config.UseRadial = true   -- Radial Menu aktivieren
+    Config.OxRadial   = true  -- ox_lib Radial Menu verwenden
+    Config.OxRadial   = false -- qb-radialmenu verwenden
+    ```
+
+    Weitere Details zur Einrichtung findest du auf der Seite zur [Radial-Menu-Konfiguration](/configuration/radial-menu).
+  </Tab>
+</Tabs>
+
+## Voraussetzungen zum Öffnen des Menüs
+
+Unabhängig von der gewählten Methode gelten folgende Voraussetzungen:
+
+- Der Spieler muss sich **in einem Fahrzeug befinden**. Außerhalb eines Fahrzeugs erscheint eine Fehlermeldung (*„Du sitzt in keinem Fahrzeug!"*).
+- Wenn `Config.OnlyDriver = true` gesetzt ist, muss der Spieler **der Fahrer** (Sitz -1) des Fahrzeugs sein. Beifahrer erhalten die Meldung *„Du musst der Fahrer sein!"*.
+
+```lua
+Config.OnlyDriver = true  -- nur der Fahrer darf das Menü öffnen
+Config.OnlyDriver = false -- alle Insassen dürfen das Menü öffnen
+```

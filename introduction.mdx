@@ -1,0 +1,57 @@
+---
+title: "KT Extra Menu: Fahrzeug-Liveries & Extras für FiveM"
+sidebarTitle: "Einführung"
+description: "KT Extra Menu ist ein FiveM-Script, das Spielern ermöglicht, Fahrzeuglackierungen auszuwählen und Extras zu verwalten – kompatibel mit ESX, QBCore, QBox und Standalone."
+---
+
+KT Extra Menu ist ein leichtgewichtiges FiveM-Script von **Lation Scripts**, das Spielern eine komfortable Oberfläche bietet, um Fahrzeug-Liveries (Lackierungen) auszuwählen und Fahrzeug-Extras (z. B. Spoiler, Zusatzscheinwerfer, Sirenenleisten) ein- oder auszuschalten. Das Script unterstützt mehrere gängige Frameworks, zwei verschiedene Menü-Systeme und lässt sich durch eine übersichtliche `config.lua` vollständig anpassen.
+
+## Features
+
+<CardGroup cols={2}>
+  <Card title="Multi-Framework Support" icon="layer-group">
+    Nativ kompatibel mit **ESX**, **QBCore**, **QBox** und **Standalone** – ohne zusätzliche Anpassungen am Quellcode.
+  </Card>
+  <Card title="Zwei Menü-Systeme" icon="window">
+    Wähle zwischen dem weit verbreiteten **ox\_lib**-Menü und dem exklusiven **Lation Modern UI** für ein modernes, markeneigenes Erscheinungsbild.
+  </Card>
+  <Card title="Radial Menu Integration" icon="circle-dot">
+    Optionale Integration in ein **Radial Menu** – Spieler können das Menü direkt über das Radialmenü öffnen, ohne einen Befehl einzutippen.
+  </Card>
+  <Card title="Custom Livery-Namen" icon="tag">
+    Vergib jedem Livery einen individuellen, lesbaren Namen in der Konfiguration, anstatt nur numerische IDs anzuzeigen.
+  </Card>
+  <Card title="Job-Einschränkungen" icon="briefcase">
+    Beschränke den Zugriff auf bestimmte **Jobs** (ESX/QBCore), sodass z. B. nur Polizisten oder Feuerwehrleute bestimmte Liveries wechseln dürfen.
+  </Card>
+  <Card title="Mehrsprachig (DE / EN)" icon="language">
+    Mitgelieferte Locale-Dateien für **Deutsch** und **Englisch** – einfach erweiterbar für weitere Sprachen.
+  </Card>
+  <Card title="Version-Check" icon="shield-check">
+    Automatischer **Versions-Check** beim Serverstart informiert Admins über verfügbare Updates, ohne den Spielbetrieb zu unterbrechen.
+  </Card>
+  <Card title="Lua Exports" icon="code">
+    Öffne das Menü programmatisch aus anderen Scripts heraus über den bereitgestellten **Lua Export** – ideal für Integrationen in eigene Ressourcen.
+  </Card>
+</CardGroup>
+
+## Abhängigkeiten
+
+KT Extra Menu benötigt mindestens eine der folgenden Ressourcen, abhängig von deiner Menü-Wahl:
+
+| Ressource | Typ | Beschreibung |
+|---|---|---|
+| [ox_lib](https://github.com/overextended/ox_lib) | **Pflicht** | Basis-Bibliothek für Menüs, Benachrichtigungen und weitere Hilfsfunktionen. Muss vor `kt_extra_menu` gestartet werden. |
+| [Lation Scripts Modern UI](https://discord.gg/A6UgrEhc8G) | Optional | Alternatives, modernes Menü-Interface von Lation Scripts. Nur erforderlich, wenn `Config.MenuSystem = 'lation'` gesetzt ist. |
+
+<Note>
+  `ox_lib` ist in jedem Fall erforderlich, auch wenn du das Lation Modern UI als Menü-System verwendest, da das Script intern auf ox_lib-Funktionen zurückgreift.
+</Note>
+
+## Support & Community
+
+Bei Fragen, Fehlerberichten oder Feature-Wünschen stehe ich dir gerne im offiziellen Discord-Server von Lation Scripts zur Verfügung:
+
+**[Discord beitreten → discord.gg/A6UgrEhc8G](https://discord.gg/A6UgrEhc8G)**
+
+Dort findest du den dedizierten Support-Kanal für KT Extra Menu, Ankündigungen zu Updates sowie eine aktive Community anderer FiveM-Entwickler und Server-Betreiber.
