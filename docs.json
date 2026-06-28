@@ -14,46 +14,197 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "KT Extra Menu",
+        "tab": "Resources",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
-              "introduction",
-              "installation",
-              "quickstart"
+              "index",
+              "escrow-errors",
+              "general-faqs"
             ],
             "icon": "rocket"
           },
           {
-            "group": "Configuration",
+            "group": "KT Weed",
+            "icon": "seedling",
             "pages": [
-              "configuration/basic",
-              "configuration/radial-menu",
-              "configuration/livery-names",
-              "configuration/ui-settings"
-            ],
-            "icon": "gear"
+              "kt-weed/install",
+              {
+                "group": "Exports",
+                "icon": "code",
+                "pages": [
+                  "kt-weed/exports/shared",
+                  "kt-weed/exports/client",
+                  "kt-weed/exports/server"
+                ]
+              },
+              "kt-weed/integrations",
+              "kt-weed/faqs",
+              "kt-weed/changelog",
+              "kt-weed/previews"
+            ]
           },
           {
-            "group": "Usage",
+            "group": "KT Meth",
+            "icon": "snowflake",
             "pages": [
-              "usage/commands",
-              "usage/job-restrictions",
-              "usage/exports"
-            ],
-            "icon": "code"
+              "kt-meth/install",
+              {
+                "group": "Exports",
+                "icon": "code",
+                "pages": [
+                  "kt-meth/exports/shared",
+                  "kt-meth/exports/client",
+                  "kt-meth/exports/server"
+                ]
+              },
+              "kt-meth/integrations",
+              "kt-meth/faqs",
+              "kt-meth/changelog",
+              "kt-meth/previews"
+            ]
           },
           {
-            "group": "Help",
+            "group": "KT Coke",
+            "icon": "syringe",
             "pages": [
-              "troubleshooting",
-              "changelog"
-            ],
-            "icon": "circle-question"
+              "kt-coke/install",
+              {
+                "group": "Exports",
+                "icon": "code",
+                "pages": [
+                  "kt-coke/exports/shared",
+                  "kt-coke/exports/client",
+                  "kt-coke/exports/server"
+                ]
+              },
+              "kt-coke/integrations",
+              "kt-coke/faqs",
+              "kt-coke/changelog",
+              "kt-coke/previews"
+            ]
+          },
+          {
+            "group": "KT Chop Shop",
+            "icon": "car",
+            "pages": [
+              "kt-chopshop/install",
+              {
+                "group": "Exports",
+                "icon": "code",
+                "pages": [
+                  "kt-chopshop/exports/shared",
+                  "kt-chopshop/exports/client",
+                  "kt-chopshop/exports/server"
+                ]
+              },
+              "kt-chopshop/integrations",
+              "kt-chopshop/faqs",
+              "kt-chopshop/changelog",
+              "kt-chopshop/previews"
+            ]
+          },
+          {
+            "group": "KT Laundering",
+            "icon": "sack-dollar",
+            "pages": [
+              "kt-laundering/install",
+              {
+                "group": "Exports",
+                "icon": "code",
+                "pages": [
+                  "kt-laundering/exports/shared",
+                  "kt-laundering/exports/client",
+                  "kt-laundering/exports/server"
+                ]
+              },
+              "kt-laundering/integrations",
+              "kt-laundering/faqs",
+              "kt-laundering/changelog",
+              "kt-laundering/previews"
+            ]
+          },
+          {
+            "group": "KT Search",
+            "icon": "magnifying-glass",
+            "pages": [
+              "kt-search/install",
+              {
+                "group": "Exports",
+                "icon": "code",
+                "pages": [
+                  "kt-search/exports/shared",
+                  "kt-search/exports/client",
+                  "kt-search/exports/server"
+                ]
+              },
+              "kt-search/integrations",
+              "kt-search/faqs",
+              "kt-search/changelog",
+              "kt-search/previews"
+            ]
+          },
+          {
+            "group": "KT Boating",
+            "icon": "sailboat",
+            "pages": [
+              "kt-boating/install",
+              {
+                "group": "Exports",
+                "icon": "code",
+                "pages": [
+                  "kt-boating/exports/shared",
+                  "kt-boating/exports/client",
+                  "kt-boating/exports/server"
+                ]
+              },
+              "kt-boating/integrations",
+              "kt-boating/faqs",
+              "kt-boating/changelog",
+              "kt-boating/previews"
+            ]
+          },
+          {
+            "group": "KT UI",
+            "icon": "palette",
+            "pages": [
+              "kt-ui/install",
+              {
+                "group": "Exports",
+                "icon": "code",
+                "pages": [
+                  "kt-ui/exports/shared",
+                  "kt-ui/exports/client",
+                  "kt-ui/exports/server"
+                ]
+              },
+              {
+                "group": "Components",
+                "icon": "shapes",
+                "pages": [
+                  "kt-ui/components/toast",
+                  "kt-ui/components/modal",
+                  "kt-ui/components/context-menu",
+                  {
+                    "group": "Minigames",
+                    "icon": "gamepad",
+                    "pages": [
+                      "kt-ui/components/minigames/lockpick",
+                      "kt-ui/components/minigames/circle-progress",
+                      "kt-ui/components/minigames/keypad"
+                    ]
+                  }
+                ]
+              },
+              "kt-ui/integrations",
+              "kt-ui/faqs",
+              "kt-ui/changelog",
+              "kt-ui/previews"
+            ]
           }
         ],
-        "icon": "car"
+        "icon": "code"
       }
     ]
   },

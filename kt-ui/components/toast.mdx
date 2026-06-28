@@ -1,0 +1,15 @@
+---
+title: "Toast"
+description: "Quick non-blocking notification toast."
+icon: "bell"
+---
+
+```lua
+exports.kt_ui:toast({
+  title = 'Saved',
+  desc  = 'Your settings have been updated.',
+  icon  = 'check',
+  type  = 'success',  -- 'info' | 'success' | 'warning' | 'error'
+  duration = 4000,
+})
+```

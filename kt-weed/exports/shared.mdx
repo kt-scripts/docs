@@ -1,0 +1,21 @@
+---
+title: "Shared Exports"
+description: "Exports available on both client and server."
+icon: "shuffle"
+---
+
+## `getConfig`
+
+Returns the merged runtime config.
+
+```lua
+local cfg = exports.kt_weed:getConfig()
+print(cfg.MaxPlantsPerPlayer)  -- 8
+```
+
+## `getPlantStages`
+
+```lua
+local stages = exports.kt_weed:getPlantStages()
+-- { 'seedling', 'vegetative', 'flowering', 'ready' }
+```

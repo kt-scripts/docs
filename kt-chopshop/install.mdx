@@ -1,0 +1,48 @@
+---
+title: "Install KT Chop Shop"
+sidebarTitle: "Installation"
+description: "Step-by-step installation guide for KT Chop Shop."
+icon: "download"
+---
+
+<Info>
+  Requires **ox\_lib**, **oxmysql**, and a target system (ox\_target/qb-target).
+</Info>
+
+## 1. Download
+
+Download `kt_chopshop` from [keymaster](https://keymaster.fivem.net) and extract to `resources/[kt]/kt_chopshop`.
+
+## 2. Database
+
+```bash
+mysql -u root -p your_db < resources/[kt]/kt_chopshop/kt_chopshop.sql
+```
+
+## 3. Configuration
+
+```lua config.lua
+Config = {}
+Config.Framework  = 'auto'
+Config.Inventory  = 'ox'
+Config.StripTimePerPart = 6  -- seconds
+Config.PartPayout = { door = 250, wheel = 300, engine = 800 }
+```
+
+## 4. Framework setup
+
+<Tabs>
+</Tabs>
+
+## 5. server.cfg
+
+```cfg
+ensure ox_lib
+ensure oxmysql
+ensure ox_target
+ensure kt_chopshop
+```
+
+<Warning>
+  Don't forget to set the chop shop location in `config.lua` or in-game via `/setchopshop`.
+</Warning>

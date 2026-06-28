@@ -1,0 +1,43 @@
+---
+title: "Install KT Boating"
+sidebarTitle: "Installation"
+description: "Step-by-step installation guide for KT Boating."
+icon: "download"
+---
+
+<Info>
+  Requires **ox\_lib**, **oxmysql**, and an inventory system.
+</Info>
+
+## 1. Download
+
+Download `kt_boating` from [keymaster](https://keymaster.fivem.net) and extract to `resources/[kt]/kt_boating`.
+
+## 2. Database
+
+```bash
+mysql -u root -p your_db < resources/[kt]/kt_boating/kt_boating.sql
+```
+
+## 3. Configuration
+
+```lua config.lua
+Config = {}
+Config.Framework  = 'auto'
+Config.Rental     = { price = 1500, deposit = 5000 }
+Config.Fishing    = { enabled = true, fishItem = 'fish' }
+Config.Boats      = { 'dinghy', 'jetmax', 'speeder', 'tropic' }
+```
+
+## 4. Framework setup
+
+<Tabs>
+</Tabs>
+
+## 5. server.cfg
+
+```cfg
+ensure ox_lib
+ensure oxmysql
+ensure kt_boating
+```

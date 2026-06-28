@@ -1,0 +1,43 @@
+---
+title: "Escrow Errors"
+description: "Common escrow errors and how to resolve them."
+icon: "shield-halved"
+---
+
+If you've just purchased and dropped a KT Scripts resource into your server, you may encounter one of the following escrow errors. This page covers the most common ones.
+
+<Warning>
+  Make sure your **CFX account email** matches the one you used at checkout, and that the resource is **whitelisted** on your CFX keymaster.
+</Warning>
+
+## Common errors
+
+<AccordionGroup>
+  <Accordion title="This resource is locked. (cfx-escrow)" icon="lock">
+    The resource isn't yet linked to this server's CFX key.
+
+    1. Open [keymaster.fivem.net](https://keymaster.fivem.net).
+    2. Go to **My Assets** and find the script.
+    3. Click **Manage** and add your **server key** under "Allowed CFX keys".
+    4. Restart the resource.
+  </Accordion>
+
+  <Accordion title="Failed to verify protected resource" icon="triangle-exclamation">
+    The escrow service couldn't be reached.
+
+    - Confirm your server has outbound internet access on port 443.
+    - Check the [FiveM status page](https://status.cfx.re).
+    - Restart your server and try again.
+  </Accordion>
+
+  <Accordion title="Resource manifest failed to load" icon="file-circle-xmark">
+    Usually caused by a corrupted download.
+
+    - Re-download from your CFX account.
+    - Verify the folder name **exactly** matches the original (`kt_weed`, `kt_meth`, etc.).
+  </Accordion>
+</AccordionGroup>
+
+## Still stuck?
+
+Reach out in our [Discord](https://discord.gg/) with your `server.cfg`, your CFX account email and a screenshot of the console error.

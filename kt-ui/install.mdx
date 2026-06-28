@@ -1,0 +1,51 @@
+---
+title: "Install KT UI"
+sidebarTitle: "Installation"
+description: "Step-by-step installation guide for KT UI."
+icon: "download"
+---
+
+<Info>
+  KT UI is the shared component and minigame library used by all other KT resources. Install it **before** any other KT script.
+</Info>
+
+## 1. Download
+
+Download `kt_ui` from [keymaster](https://keymaster.fivem.net) and extract to `resources/[kt]/kt_ui`.
+
+## 2. Dependencies
+
+<CardGroup cols={2}>
+  <Card title="ox_lib" icon="box" href="https://github.com/overextended/ox_lib">
+  </Card>
+
+  <Card title="FiveM build 2802+" icon="server">
+  </Card>
+</CardGroup>
+
+## 3. Configuration
+
+```lua config.lua
+Config = {}
+Config.Theme        = 'dark'      -- 'dark' | 'light' | 'auto'
+Config.AccentColor  = '#d83533'
+Config.SoundEffects = true
+```
+
+### Convars
+
+```cfg server.cfg
+set kt_ui:theme "dark"
+set kt_ui:accent "#d83533"
+```
+
+## 4. server.cfg
+
+```cfg
+ensure ox_lib
+ensure kt_ui   # must be started before other kt_* resources
+```
+
+<Warning>
+  Always start `kt_ui` **before** other KT scripts in `server.cfg`. Other resources auto-detect it on boot.
+</Warning>

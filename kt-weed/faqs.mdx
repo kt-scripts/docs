@@ -1,0 +1,19 @@
+---
+title: "FAQs"
+description: "Frequently asked questions about KT Weed."
+icon: "circle-question"
+---
+
+<AccordionGroup>
+  <Accordion title="Can I change the plant model?" icon="seedling">
+    Yes — set `Config.PlantProp` in `config.lua` to any valid GTA prop hash.
+  </Accordion>
+
+  <Accordion title="How are plants saved?" icon="database">
+    Plant data is persisted in the `kt_weed_plants` table via `oxmysql`. Auto-save runs every 60 seconds.
+  </Accordion>
+
+  <Accordion title="Is it optimized?" icon="gauge-high">
+    Idle: **0.00ms** client and server. Active plant update tick: **0.02ms** average.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,22 @@
+---
+title: "Client Exports"
+description: "Client-side exports for KT Weed."
+icon: "display"
+---
+
+## `openPlantMenu`
+
+Opens the planting menu for the local player.
+
+```lua
+exports.kt_weed:openPlantMenu()
+```
+
+## `getNearbyPlants`
+
+Returns plant entities within `radius` of the local player.
+
+```lua
+local plants = exports.kt_weed:getNearbyPlants(10.0)
+for _, p in ipairs(plants) do print(p.id, p.stage) end
+```

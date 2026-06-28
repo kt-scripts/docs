@@ -1,0 +1,24 @@
+---
+title: "Server Exports"
+description: "Server-side exports for KT Weed."
+icon: "server"
+---
+
+## `givePlayerSeeds`
+
+```lua
+exports.kt_weed:givePlayerSeeds(source, 'sativa', 5)
+```
+
+## `getPlayerPlants`
+
+```lua
+local plants = exports.kt_weed:getPlayerPlants(source)
+print(#plants)
+```
+
+## `removeAllPlants`
+
+```lua
+exports.kt_weed:removeAllPlants(source)
+```

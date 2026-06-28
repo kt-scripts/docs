@@ -1,0 +1,63 @@
+---
+title: "Install KT Meth"
+sidebarTitle: "Installation"
+description: "Step-by-step installation guide for KT Meth."
+icon: "download"
+---
+
+<Info>
+  Requires **ox\_lib**, **oxmysql** and an inventory system (ox/qb/qs).
+</Info>
+
+## 1. Download
+
+Download `kt_meth` from [keymaster](https://keymaster.fivem.net) and extract to `resources/[kt]/kt_meth`.
+
+## 2. Database
+
+```bash
+mysql -u root -p your_db < resources/[kt]/kt_meth/kt_meth.sql
+```
+
+## 3. Configuration
+
+```lua config.lua
+Config = {}
+Config.Framework  = 'auto'
+Config.Inventory  = 'ox'
+Config.LabCookTime = 180  -- seconds
+Config.QualityMinigame = true
+```
+
+### Convars
+
+```cfg server.cfg
+setr kt_meth:debug 0
+```
+
+## 4. Framework setup
+
+<Tabs>
+  <Tab title="ESX">
+    Add items: `meth_ingredient_a`, `meth_ingredient_b`, `meth_raw`, `meth_bag`.
+  </Tab>
+  <Tab title="QBCore">
+    Add the four items to `qb-core/shared/items.lua`.
+  </Tab>
+  <Tab title="Qbox">
+    Register in `ox_inventory/data/items.lua`.
+  </Tab>
+</Tabs>
+
+## 5. server.cfg
+
+```cfg
+ensure ox_lib
+ensure oxmysql
+ensure ox_inventory
+ensure kt_meth
+```
+
+<Tip>
+  Set the lab location in-game using `/setmethlab` (admin-only).
+</Tip>

@@ -1,0 +1,41 @@
+---
+title: "Install KT Search"
+sidebarTitle: "Installation"
+description: "Step-by-step installation guide for KT Search."
+icon: "download"
+---
+
+<Info>
+  Requires **ox\_lib** and an inventory system (ox/qb/qs).
+</Info>
+
+## 1. Download
+
+Download `kt_search` from [keymaster](https://keymaster.fivem.net) and extract to `resources/[kt]/kt_search`.
+
+## 2. Configuration
+
+```lua config.lua
+Config = {}
+Config.Framework  = 'auto'
+Config.SearchKey  = 'F6'
+Config.SearchTime = 4   -- seconds
+Config.AllowedJobs = { 'police', 'sheriff' }
+```
+
+### Convars
+
+```cfg server.cfg
+setr kt_search:debug 0
+```
+
+## 3. server.cfg
+
+```cfg
+ensure ox_lib
+ensure kt_search
+```
+
+<Tip>
+  No database required — KT Search is fully stateless.
+</Tip>

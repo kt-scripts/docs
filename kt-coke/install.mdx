@@ -1,0 +1,44 @@
+---
+title: "Install KT Coke"
+sidebarTitle: "Installation"
+description: "Step-by-step installation guide for KT Coke."
+icon: "download"
+---
+
+<Info>
+  Requires **ox\_lib**, **oxmysql**, and an inventory system.
+</Info>
+
+## 1. Download
+
+Download `kt_coke` from [keymaster](https://keymaster.fivem.net) and extract to `resources/[kt]/kt_coke`.
+
+## 2. Database
+
+```bash
+mysql -u root -p your_db < resources/[kt]/kt_coke/kt_coke.sql
+```
+
+## 3. Configuration
+
+```lua config.lua
+Config = {}
+Config.Framework  = 'auto'
+Config.Inventory  = 'ox'
+Config.CartelRaids = true
+Config.SellRoutes = { 'vagos', 'ballas', 'families' }
+```
+
+## 4. Framework setup
+
+<Tabs>
+</Tabs>
+
+## 5. server.cfg
+
+```cfg
+ensure ox_lib
+ensure oxmysql
+ensure ox_inventory
+ensure kt_coke
+```

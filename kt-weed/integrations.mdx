@@ -1,0 +1,42 @@
+---
+title: "Integrations"
+description: "Plug KT Weed into your inventory, target, and dispatch systems."
+icon: "plug"
+---
+
+All integrations live in `bridge/` and are auto-detected when their resource is started before `kt_weed`.
+
+## Supported out of the box
+
+<CardGroup cols={2}>
+  <Card title="ox_inventory" icon="box-archive">
+  </Card>
+
+  <Card title="qb-inventory" icon="box-archive">
+  </Card>
+
+  <Card title="qs-inventory" icon="box-archive">
+  </Card>
+
+  <Card title="ox_target" icon="crosshairs">
+  </Card>
+
+  <Card title="qb-target" icon="crosshairs">
+  </Card>
+
+  <Card title="ps-dispatch" icon="walkie-talkie">
+  </Card>
+</CardGroup>
+
+## Adding a custom integration
+
+Duplicate `bridge/_template.lua` and implement the four exposed methods:
+
+```lua
+return {
+  addItem    = function(src, name, count) ... end,
+  removeItem = function(src, name, count) ... end,
+  hasItem    = function(src, name, count) ... end,
+  notify     = function(src, msg, type)   ... end,
+}
+```

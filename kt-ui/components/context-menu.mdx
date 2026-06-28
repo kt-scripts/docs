@@ -1,0 +1,16 @@
+---
+title: "Context Menu"
+description: "Right-click style context menu."
+icon: "list"
+---
+
+```lua
+exports.kt_ui:openContextMenu({
+  title = 'Vehicle actions',
+  items = {
+    { label = 'Lock',   icon = 'lock',   onSelect = function() print('lock') end },
+    { label = 'Engine', icon = 'gear',   onSelect = function() print('engine') end },
+    { label = 'Sell',   icon = 'dollar', onSelect = function() print('sell') end },
+  },
+})
+```

@@ -1,0 +1,108 @@
+---
+title: "Install KT Weed"
+sidebarTitle: "Installation"
+description: "Step-by-step installation guide for KT Weed."
+icon: "download"
+---
+
+<Info>
+  This guide assumes you have a working FiveM server running **ESX**, **QBCore**, or **Qbox**, plus `ox_lib` and an **ox\_inventory**-compatible inventory.
+</Info>
+
+## 1. Download
+
+1. Log into [keymaster.fivem.net](https://keymaster.fivem.net).
+2. Open **My Assets** and download **kt\_weed**.
+3. Extract the folder into `resources/[kt]/kt_weed`.
+
+## 2. Dependencies
+
+<CardGroup cols={2}>
+  <Card title="ox_lib" icon="box" href="https://github.com/overextended/ox_lib">
+    Required for UI, callbacks, and progress bars.
+  </Card>
+
+  <Card title="oxmysql" icon="database" href="https://github.com/overextended/oxmysql">
+    Required for persistent plant data.
+  </Card>
+</CardGroup>
+
+## 3. Database
+
+Import the included `kt_weed.sql` file:
+
+```bash
+mysql -u root -p your_db < resources/[kt]/kt_weed/kt_weed.sql
+```
+
+## 4. Configuration
+
+Edit `config.lua` to match your framework and economy:
+
+```lua config.lua
+Config = {}
+
+Config.Framework      = 'auto'   -- 'esx' | 'qb' | 'qbox' | 'auto'
+Config.Inventory      = 'ox'     -- 'ox' | 'qb' | 'qs'
+Config.GrowthTimeMins = 90       -- Time per plant stage
+Config.MaxPlantsPerPlayer = 8
+Config.UseBlips       = true
+```
+
+### Convars (optional)
+
+Set runtime overrides without editing files:
+
+```cfg server.cfg
+setr kt_weed:debug 0
+set  kt_weed:webhook "https://discord.com/api/webhooks/..."
+```
+
+## 5. Framework setup
+
+<Tabs>
+  <Tab title="ESX">
+    Add the item to your shared items file:
+
+    ```lua
+    ['weed_seed']  = { label = 'Weed Seed',  weight = 50,  stack = true, close = true },
+    ['weed_bud']   = { label = 'Weed Bud',   weight = 100, stack = true, close = true },
+    ['weed_joint'] = { label = 'Joint',      weight = 25,  stack = true, close = true },
+    ```
+  </Tab>
+  <Tab title="QBCore">
+    Add to `qb-core/shared/items.lua`:
+
+    ```lua
+    weed_seed  = { name = 'weed_seed',  label = 'Weed Seed',  weight = 50,  type = 'item', image = 'weed_seed.png',  unique = false, useable = true, shouldClose = true },
+    weed_bud   = { name = 'weed_bud',   label = 'Weed Bud',   weight = 100, type = 'item', image = 'weed_bud.png',   unique = false, useable = true, shouldClose = true },
+    weed_joint = { name = 'weed_joint', label = 'Joint',      weight = 25,  type = 'item', image = 'weed_joint.png', unique = false, useable = true, shouldClose = true },
+    ```
+  </Tab>
+  <Tab title="Qbox">
+    Items are auto-registered via `ox_inventory`. Make sure your `ox_inventory/data/items.lua` includes the three seed/bud/joint entries.
+  </Tab>
+</Tabs>
+
+## 6. server.cfg
+
+```cfg
+ensure ox_lib
+ensure oxmysql
+ensure ox_inventory
+ensure kt_weed
+```
+
+## 7. Restart
+
+<Tip>
+  Use `refresh; restart kt_weed` to reload without rebooting the server.
+</Tip>
+
+You should see:
+
+```text
+[ script:kt_weed ]  KT Weed v1.0.0 — loaded for esx (oxmysql)
+```
+
+That's it! Check the in-game blip and start planting.

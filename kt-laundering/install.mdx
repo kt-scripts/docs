@@ -1,0 +1,43 @@
+---
+title: "Install KT Laundering"
+sidebarTitle: "Installation"
+description: "Step-by-step installation guide for KT Laundering."
+icon: "download"
+---
+
+<Info>
+  Requires **ox\_lib**, **oxmysql**, and an inventory system.
+</Info>
+
+## 1. Download
+
+Download `kt_laundering` from [keymaster](https://keymaster.fivem.net) and extract to `resources/[kt]/kt_laundering`.
+
+## 2. Database
+
+```bash
+mysql -u root -p your_db < resources/[kt]/kt_laundering/kt_laundering.sql
+```
+
+## 3. Configuration
+
+```lua config.lua
+Config = {}
+Config.Framework  = 'auto'
+Config.WashRate   = 0.85   -- 85% of dirty money returned as clean
+Config.DailyCap   = 50000
+Config.Fronts     = { 'laundromat', 'carwash', 'casino' }
+```
+
+## 4. Framework setup
+
+<Tabs>
+</Tabs>
+
+## 5. server.cfg
+
+```cfg
+ensure ox_lib
+ensure oxmysql
+ensure kt_laundering
+```

@@ -1,0 +1,16 @@
+---
+title: "Modal"
+description: "Blocking confirmation modal."
+icon: "window-restore"
+---
+
+```lua
+local ok = exports.kt_ui:openModal({
+  title = 'Sell vehicle?',
+  body  = 'You will receive $5,000. This cannot be undone.',
+  confirmLabel = 'Sell',
+  cancelLabel  = 'Cancel',
+})
+
+if ok then print('confirmed') end
+```
