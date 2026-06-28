@@ -1,12 +1,12 @@
 ---
-title: "KT Extra Menu: Grundkonfiguration richtig einrichten"
-sidebarTitle: "Grundeinstellungen"
-description: "Konfiguriere Framework, Sprache, Menü-System, Keybind, Befehl und Zugriffsrechte in der config.lua von KT Extra Menu für deinen FiveM-Server."
+title: "KT Extra Menu: Set up the basic configuration"
+sidebarTitle: "Basic Settings"
+description: "Configure framework, language, menu system, keybind, command and access rights in the config.lua of KT Extra Menu for your FiveM server."
 ---
 
-Die zentrale Konfigurationsdatei von KT Extra Menu befindet sich im Ressourcen-Ordner unter `config.lua`. Alle grundlegenden Verhaltensweisen des Scripts – Framework-Auswahl, Sprache, Menü-System, Zugangsbeschränkungen und Benachrichtigungen – werden hier gesteuert. Passe diese Datei an dein Server-Setup an, bevor du das Skript startest.
+The central configuration file of KT Extra Menu is located in the resource folder at `config.lua`. All fundamental behaviors of the script – framework selection, language, menu system, access restrictions and notifications – are controlled here. Adjust this file to your server setup before starting the script.
 
-## Vollständiger Grundkonfigurations-Block
+## Complete basic configuration block
 
 ```lua
 Config = {}
@@ -44,106 +44,106 @@ Config.Notifications = {
 }
 ```
 
-## Konfigurationsoptionen
+## Configuration options
 
-### Allgemein
+### General
 
 <ParamField path="Config.Framework" type="string" required>
-  Gibt das verwendete Framework an. Mögliche Werte:
+  Specifies the framework in use. Possible values:
 
-  | Wert | Framework |
-  |------|-----------|
+  | Value | Framework |
+  | --- | --- |
   | `'esx'` | ESX |
   | `'qbcore'` | QBCore |
   | `'qbox'` | QBox |
-  | `'standalone'` | Kein Framework – keine Job-Prüfung |
+  | `'standalone'` | No framework – no job check |
 
-  **Standardwert:** `'qbox'`
+  **Default:** `'qbox'`
 </ParamField>
 
-<ParamField path="Config.Language" type="string" default="'en'">
-  Sprache der Menü-Texte und Benachrichtigungen. Verfügbare Sprachdateien liegen unter `locales/`.
+<ParamField path="Config.Language" default="'en'" type="string">
+  Language for menu texts and notifications. Available locale files are located under `locales/`.
 
-  | Wert | Sprache |
-  |------|---------|
-  | `'en'` | Englisch |
-  | `'de'` | Deutsch |
+  | Value | Language |
+  | --- | --- |
+  | `'en'` | English |
+  | `'de'` | German |
 </ParamField>
 
-<ParamField path="Config.MenuSystem" type="string" default="'ox'">
-  Wählt das Menü-System für die Benutzeroberfläche aus.
+<ParamField path="Config.MenuSystem" default="'ox'" type="string">
+  Selects the menu system for the user interface.
 
-  | Wert | System |
-  |------|--------|
-  | `'ox'` | ox_lib Context Menu |
+  | Value | System |
+  | --- | --- |
+  | `'ox'` | ox\_lib context menu |
   | `'lation'` | Lation Scripts Modern UI |
 
-  Weitere Details zu den UI-Systemen findest du unter [UI-Einstellungen](/configuration/ui-settings).
+  More details about the UI systems can be found under [UI settings](/configuration/ui-settings).
 </ParamField>
 
-<ParamField path="Config.CloseMenuAfterSelection" type="boolean" default="false">
-  Wenn auf `true` gesetzt, wird das Menü nach jeder Auswahl automatisch geschlossen. Bei `false` bleibt das Menü offen, damit mehrere Änderungen hintereinander vorgenommen werden können.
+<ParamField path="Config.CloseMenuAfterSelection" default="false" type="boolean">
+  When set to `true`, the menu is automatically closed after each selection. When `false`, the menu stays open so multiple changes can be made in sequence.
 </ParamField>
 
 ---
 
-### Öffnen des Menüs
+### Opening the menu
 
-<ParamField path="Config.Command" type="string" default="'vehiclemenu'">
-  Chat-Befehl, mit dem das Fahrzeugmenü geöffnet wird. Der Befehl ist immer aktiv, unabhängig von Keybind oder Radial Menu. Beispiel: `/vehiclemenu`
+<ParamField path="Config.Command" default="'vehiclemenu'" type="string">
+  Chat command used to open the vehicle menu. The command is always active, regardless of keybind or radial menu. Example: `/vehiclemenu`
 </ParamField>
 
-<ParamField path="Config.Keybind" type="string | false" default="'F11'">
-  Tastenkürzel zum Öffnen des Menüs. Funktioniert nur, wenn `Config.UseRadial = false` ist. Setze diesen Wert auf `false`, um den Keybind vollständig zu deaktivieren.
+<ParamField path="Config.Keybind" default="'F11'" type="string | false">
+  Key used to open the menu. Only works if `Config.UseRadial = false`. Set this value to `false` to disable the keybind completely.
 
   ```lua
-  Config.Keybind = 'F11'   -- Keybind aktiv
-  Config.Keybind = false   -- Keybind deaktiviert
+  Config.Keybind = 'F11'   -- Keybind active
+  Config.Keybind = false   -- Keybind disabled
   ```
 </ParamField>
 
 ---
 
-### Zugangsberechtigungen
+### Access permissions
 
-<ParamField path="Config.OnlyDriver" type="boolean" default="true">
-  Wenn `true`, kann nur der Fahrer des Fahrzeugs das Menü öffnen. Beifahrer und andere Passagiere haben keinen Zugriff.
+<ParamField path="Config.OnlyDriver" default="true" type="boolean">
+  When `true`, only the driver of the vehicle can open the menu. Passengers and other occupants have no access.
 </ParamField>
 
-<ParamField path="Config.RequiredJob" type="table" default="{}">
-  Liste der Jobs, die das Menü verwenden dürfen. Eine leere Tabelle (`{}`) bedeutet, dass alle Spieler Zugriff haben (sofern `Config.OnlyDriver` und sonstige Bedingungen erfüllt sind).
+<ParamField path="Config.RequiredJob" default="{}" type="table">
+  List of jobs allowed to use the menu. An empty table (`{}`) means that all players have access (provided `Config.OnlyDriver` and other conditions are met).
 
   ```lua
-  -- Alle dürfen das Menü nutzen
+  -- Everyone may use the menu
   Config.RequiredJob = {}
-
-  -- Nur ein bestimmter Job
+  
+  -- Only one specific job
   Config.RequiredJob = {'mechanic'}
-
-  -- Mehrere Jobs
+  
+  -- Multiple jobs
   Config.RequiredJob = {'mechanic', 'police', 'ambulance'}
   ```
 
   <Note>
-    Bei `Config.Framework = 'standalone'` wird die Job-Prüfung übersprungen – alle Spieler haben uneingeschränkten Zugriff.
+    With `Config.Framework = 'standalone'`, the job check is skipped – all players have unrestricted access.
   </Note>
 </ParamField>
 
 ---
 
-### Benachrichtigungen
+### Notifications
 
-<ParamField path="Config.Notifications.duration" type="number" default="3000">
-  Anzeigedauer von Benachrichtigungen in Millisekunden. `3000` entspricht 3 Sekunden.
+<ParamField path="Config.Notifications.duration" default="3000" type="number">
+  Display duration of notifications in milliseconds. `3000` equals 3 seconds.
 </ParamField>
 
-<ParamField path="Config.Notifications.position" type="string" default="'top-right'">
-  Bildschirmposition der Benachrichtigungen (nur relevant bei `Config.MenuSystem = 'ox'`).
+<ParamField path="Config.Notifications.position" default="'top-right'" type="string">
+  Screen position of notifications (only relevant with `Config.MenuSystem = 'ox'`).
 
-  | Wert | Position |
-  |------|----------|
-  | `'top-right'` | Oben rechts |
-  | `'top-left'` | Oben links |
-  | `'bottom-right'` | Unten rechts |
-  | `'bottom-left'` | Unten links |
+  | Value | Position |
+  | --- | --- |
+  | `'top-right'` | Top right |
+  | `'top-left'` | Top left |
+  | `'bottom-right'` | Bottom right |
+  | `'bottom-left'` | Bottom left |
 </ParamField>

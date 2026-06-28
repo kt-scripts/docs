@@ -1,107 +1,107 @@
 ---
-title: "KT Extra Menu: Befehle und Tastenkürzel konfigurieren"
-sidebarTitle: "Befehle"
-description: "Übersicht aller Chat-Befehle und Tastenkürzel von KT Extra Menu sowie eine Schritt-für-Schritt-Anleitung zur Anpassung in der config.lua."
+title: "KT Extra Menu: Configure commands and keybinds"
+sidebarTitle: "Commands"
+description: "Overview of all chat commands and keybinds of KT Extra Menu, plus a step-by-step guide on how to customize them in config.lua."
 ---
 
-KT Extra Menu lässt sich auf mehrere Arten öffnen: per Chat-Befehl, per Tastenkürzel oder über ein Radial Menu. Alle Methoden sind zentral in der `config.lua` konfigurierbar — ohne eine einzige Zeile Skript-Code anfassen zu müssen.
+KT Extra Menu can be opened in multiple ways: via chat command, via keybind or through a radial menu. All methods are centrally configurable in `config.lua` — without touching a single line of script code.
 
-## Chat-Befehle
+## Chat commands
 
-| Befehl | Beschreibung |
-|---|---|
-| `/vehiclemenu` | Öffnet das Fahrzeug-Anpassungsmenü (Liveries & Extras) |
+| Command | Description |
+| --- | --- |
+| `/vehiclemenu` | Opens the vehicle customization menu (liveries & extras) |
 
-Der Standard-Befehlsname ist `vehiclemenu`. Er kann jederzeit über `Config.Command` in der `config.lua` geändert werden:
+The default command name is `vehiclemenu`. It can be changed at any time via `Config.Command` in `config.lua`:
 
 ```lua
-Config.Command = 'vehiclemenu' -- beliebigen Namen eintragen
+Config.Command = 'vehiclemenu' -- enter any name
 ```
 
 <Note>
-  Der Befehl ist immer aktiv, unabhängig davon ob ein Tastenkürzel oder das Radial Menu aktiviert ist.
+  The command is always active, regardless of whether a keybind or the radial menu is enabled.
 </Note>
 
-## Tastenkürzel (Keybind)
+## Keybind
 
-Das Standard-Tastenkürzel zum Öffnen des Menüs ist **F11**. Es wird automatisch in GTA V registriert, sobald der Server startet.
+The default keybind to open the menu is **F11**. It is automatically registered in GTA V as soon as the server starts.
 
 ```lua
-Config.Keybind = 'F11'  -- beliebige Taste eintragen, z. B. 'F9', 'F10', 'HOME'
-Config.Keybind = false  -- Tastenkürzel vollständig deaktivieren
+Config.Keybind = 'F11'  -- enter any key, e.g. 'F9', 'F10', 'HOME'
+Config.Keybind = false  -- disable keybind entirely
 ```
 
 <Warning>
-  Das Tastenkürzel wird **nur registriert, wenn `Config.UseRadial = false`** gesetzt ist. Sobald das Radial Menu aktiviert wird, hat `Config.Keybind` keine Wirkung.
+  The keybind is **only registered if `Config.UseRadial = false`** is set. As soon as the radial menu is enabled, `Config.Keybind` has no effect.
 </Warning>
 
-Spieler können ihre persönliche Belegung jederzeit selbst anpassen:
+Players can change their personal binding at any time:
 
 <Steps>
-  <Step title="GTA V Einstellungen öffnen">
-    Im Spiel das Pausenmenü öffnen und zu **Einstellungen → Tastatur / Controller** navigieren.
+  <Step title="Open GTA V settings">
+    In game, open the pause menu and navigate to **Settings → Keyboard / Controller**.
   </Step>
-  <Step title="Ressource suchen">
-    In der Tastenbelegungsliste nach dem Ressourcennamen **`kt_extra_menu`** suchen.
+  <Step title="Find the resource">
+    In the key bindings list, look for the resource name **`kt_extra_menu`**.
   </Step>
-  <Step title="Taste neu belegen">
-    Die gewünschte Aktion auswählen und eine neue Taste zuweisen. Die individuelle Belegung wird clientseitig gespeichert und überschreibt den Server-Standard.
+  <Step title="Rebind the key">
+    Select the desired action and assign a new key. The custom binding is stored client-side and overrides the server default.
   </Step>
 </Steps>
 
-## Vollständige Konfiguration – Befehl & Tastenkürzel
+## Full configuration – command & keybind
 
 ```lua
--- Chat-Befehl zum Öffnen des Menüs
+-- Chat command to open the menu
 Config.Command = 'vehiclemenu'
 
--- Tastenkürzel (nur aktiv wenn Config.UseRadial = false)
--- Auf false setzen, um das Tastenkürzel zu deaktivieren
+-- Keybind (only active if Config.UseRadial = false)
+-- Set to false to disable the keybind
 Config.Keybind = 'F11'
 ```
 
-## Menü öffnen – alle Methoden
+## Open the menu – all methods
 
 <Tabs>
-  <Tab title="Befehl">
-    Tippe den folgenden Befehl im Chat ein, während du in einem Fahrzeug sitzt:
+  <Tab title="Command">
+    Type the following command in chat while sitting in a vehicle:
 
     ```bash
     /vehiclemenu
     ```
 
-    Der Befehlsname kann in der `config.lua` über `Config.Command` angepasst werden. Der Befehl steht immer zur Verfügung, egal ob Radial Menu oder Tastenkürzel aktiv ist.
+    The command name can be customized in `config.lua` via `Config.Command`. The command is always available, regardless of whether the radial menu or keybind is active.
   </Tab>
-  <Tab title="Tastenkürzel">
-    Drücke **F11** (oder die in `Config.Keybind` hinterlegte Taste), um das Menü zu öffnen.
+  <Tab title="Keybind">
+    Press **F11** (or the key set in `Config.Keybind`) to open the menu.
 
     ```lua
     Config.Keybind = 'F11'
     ```
 
-    Spieler können die Taste individuell in den GTA V-Einstellungen unter dem Ressourcennamen **`kt_extra_menu`** neu belegen. Das Tastenkürzel ist nur verfügbar, wenn `Config.UseRadial = false`.
+    Players can individually rebind the key in the GTA V settings under the resource name **`kt_extra_menu`**. The keybind is only available when `Config.UseRadial = false`.
   </Tab>
   <Tab title="Radial Menu">
-    Wenn `Config.UseRadial = true` gesetzt ist, erscheint ein Eintrag **„Fahrzeug Anpassung"** im Radial Menu, sobald der Spieler in einem Fahrzeug sitzt und die nötigen Berechtigungen hat.
+    If `Config.UseRadial = true` is set, an entry **"Vehicle Customization"** appears in the radial menu as soon as the player is in a vehicle and has the required permissions.
 
     ```lua
-    Config.UseRadial = true   -- Radial Menu aktivieren
-    Config.OxRadial   = true  -- ox_lib Radial Menu verwenden
-    Config.OxRadial   = false -- qb-radialmenu verwenden
+    Config.UseRadial = true   -- enable radial menu
+    Config.OxRadial   = true  -- use ox_lib radial menu
+    Config.OxRadial   = false -- use qb-radialmenu
     ```
 
-    Weitere Details zur Einrichtung findest du auf der Seite zur [Radial-Menu-Konfiguration](/configuration/radial-menu).
+    For more setup details, see the [radial menu configuration](/configuration/radial-menu) page.
   </Tab>
 </Tabs>
 
-## Voraussetzungen zum Öffnen des Menüs
+## Requirements to open the menu
 
-Unabhängig von der gewählten Methode gelten folgende Voraussetzungen:
+Regardless of the chosen method, the following requirements apply:
 
-- Der Spieler muss sich **in einem Fahrzeug befinden**. Außerhalb eines Fahrzeugs erscheint eine Fehlermeldung (*„Du sitzt in keinem Fahrzeug!"*).
-- Wenn `Config.OnlyDriver = true` gesetzt ist, muss der Spieler **der Fahrer** (Sitz -1) des Fahrzeugs sein. Beifahrer erhalten die Meldung *„Du musst der Fahrer sein!"*.
+- The player must be **inside a vehicle**. Outside a vehicle, an error message appears (_"You are not in a vehicle!"_).
+- If `Config.OnlyDriver = true` is set, the player must be **the driver** (seat -1) of the vehicle. Passengers receive the message _"You must be the driver!"_.
 
 ```lua
-Config.OnlyDriver = true  -- nur der Fahrer darf das Menü öffnen
-Config.OnlyDriver = false -- alle Insassen dürfen das Menü öffnen
+Config.OnlyDriver = true  -- only the driver may open the menu
+Config.OnlyDriver = false -- all occupants may open the menu
 ```

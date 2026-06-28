@@ -1,26 +1,26 @@
 ---
-title: "KT Extra Menu Lua Exports: Menü programmatisch öffnen"
+title: "KT Extra Menu Lua Exports: Open the menu programmatically"
 sidebarTitle: "Lua Exports"
-description: "KT Extra Menu bietet drei Lua Exports, mit denen andere Ressourcen das Menü programmatisch öffnen können – ideal für ox_target oder qb-target."
+description: "KT Extra Menu provides three Lua exports that allow other resources to open the menu programmatically – ideal for ox_target or qb-target."
 ---
 
-Exports erlauben es anderen Ressourcen auf deinem Server, das KT Extra Menu **programmatisch** aufzurufen — ohne dass der Spieler einen Chat-Befehl eingeben oder eine Taste drücken muss. Das ist besonders nützlich, wenn du das Menü aus einem Interaktions-Script (z. B. `ox_target`, `qb-target`) heraus öffnen möchtest oder eigene Trigger-Logik benötigst.
+Exports allow other resources on your server to call KT Extra Menu **programmatically** — without the player having to type a chat command or press a key. This is particularly useful when you want to open the menu from an interaction script (e.g. `ox_target`, `qb-target`) or need custom trigger logic.
 
-## Verfügbare Exports
+## Available exports
 
-KT Extra Menu registriert drei Client-seitige Exports:
+KT Extra Menu registers three client-side exports:
 
-| Export | Beschreibung |
-|---|---|
-| `OpenVehicleMenu` | Öffnet das vollständige Fahrzeug-Anpassungsmenü (Hauptmenü mit Livery- und Extras-Auswahl) |
-| `OpenLiveryMenu` | Öffnet direkt das Livery-Untermenü des aktuellen Fahrzeugs |
-| `OpenExtrasMenu` | Öffnet direkt das Extras-Untermenü des aktuellen Fahrzeugs |
+| Export | Description |
+| --- | --- |
+| `OpenVehicleMenu` | Opens the full vehicle customization menu (main menu with livery and extras selection) |
+| `OpenLiveryMenu` | Opens the livery submenu of the current vehicle directly |
+| `OpenExtrasMenu` | Opens the extras submenu of the current vehicle directly |
 
 ---
 
 ### OpenVehicleMenu
 
-Öffnet das **Hauptmenü** von KT Extra Menu. Der Spieler sieht zunächst die Auswahl zwischen Liveries und Extras.
+Opens the **main menu** of KT Extra Menu. The player first sees the choice between liveries and extras.
 
 ```lua
 exports['kt_extra_menu']:OpenVehicleMenu()
@@ -30,7 +30,7 @@ exports['kt_extra_menu']:OpenVehicleMenu()
 
 ### OpenLiveryMenu
 
-Öffnet das **Livery-Untermenü** direkt, ohne dass der Spieler zuerst das Hauptmenü durchläuft. Das Script ermittelt automatisch das aktuelle Fahrzeug des Spielers.
+Opens the **livery submenu** directly, without the player having to go through the main menu first. The script automatically determines the player's current vehicle.
 
 ```lua
 exports['kt_extra_menu']:OpenLiveryMenu()
@@ -40,7 +40,7 @@ exports['kt_extra_menu']:OpenLiveryMenu()
 
 ### OpenExtrasMenu
 
-Öffnet das **Extras-Untermenü** direkt. Auch hier wird das aktuelle Fahrzeug des Spielers automatisch ermittelt.
+Opens the **extras submenu** directly. The player's current vehicle is also determined automatically here.
 
 ```lua
 exports['kt_extra_menu']:OpenExtrasMenu()
@@ -48,48 +48,48 @@ exports['kt_extra_menu']:OpenExtrasMenu()
 
 ---
 
-### Alle drei Exports auf einen Blick
+### All three exports at a glance
 
 ```lua
--- Hauptmenü öffnen (Liveries + Extras zur Auswahl)
+-- Open main menu (liveries + extras selection)
 exports['kt_extra_menu']:OpenVehicleMenu()
 
--- Nur Livery-Menü öffnen
+-- Open only the livery menu
 exports['kt_extra_menu']:OpenLiveryMenu()
 
--- Nur Extras-Menü öffnen
+-- Open only the extras menu
 exports['kt_extra_menu']:OpenExtrasMenu()
 ```
 
 <Note>
-  Alle drei Exports prüfen **dieselben Einschränkungen** wie der normale Chat-Befehl: Der Spieler muss sich in einem Fahrzeug befinden, bei `Config.OnlyDriver = true` muss er der Fahrer sein, und sein Job muss in `Config.RequiredJob` stehen (sofern die Liste nicht leer ist). Ein Export allein umgeht keine dieser Prüfungen.
+  All three exports enforce the **same restrictions** as the regular chat command: The player must be inside a vehicle, must be the driver when `Config.OnlyDriver = true`, and their job must be in `Config.RequiredJob` (unless the list is empty). Using an export does not bypass any of these checks.
 </Note>
 
 <Note>
-  `OpenLiveryMenu` und `OpenExtrasMenu` ermitteln das aktuelle Fahrzeug des Spielers **automatisch**. Du musst kein Fahrzeug-Handle übergeben. Sitzt der Spieler in keinem Fahrzeug, tut der Export nichts.
+  `OpenLiveryMenu` and `OpenExtrasMenu` determine the player's current vehicle **automatically**. You do not need to pass a vehicle handle. If the player is not in a vehicle, the export does nothing.
 </Note>
 
-## NetEvent als Alternative
+## NetEvent as an alternative
 
-Neben den Exports gibt es auch einen registrierten **NetEvent**, der das Hauptmenü auslöst. Das ist praktisch für Ressourcen, die Ereignisse statt Exports bevorzugen — z. B. das `qb-radialmenu`:
+In addition to the exports, there is also a registered **NetEvent** that triggers the main menu. This is convenient for resources that prefer events over exports — e.g. `qb-radialmenu`:
 
 ```lua
--- Hauptmenü per Event öffnen (clientseitig)
+-- Open main menu via event (client side)
 TriggerEvent('vehicle_customizer:openMenu')
 ```
 
-Dieser Event ist äquivalent zu `exports['kt_extra_menu']:OpenVehicleMenu()` und unterliegt denselben Einschränkungen.
+This event is equivalent to `exports['kt_extra_menu']:OpenVehicleMenu()` and is subject to the same restrictions.
 
-## Praxisbeispiel: ox_target / qb-target
+## Real-world example: ox\_target / qb-target
 
-Ein typischer Anwendungsfall ist das Öffnen des Menüs über eine Fahrzeug-Interaktion. Das folgende Beispiel zeigt, wie du mit `ox_target` eine Zone an einem Fahrzeugmodell registrierst:
+A typical use case is opening the menu through a vehicle interaction. The following example shows how to register a zone on a vehicle model using `ox_target`:
 
 ```lua
--- Beispiel mit ox_target (clientseitig, z. B. in deiner Interaktions-Ressource)
+-- Example with ox_target (client side, e.g. in your interaction resource)
 exports['ox_target']:addModel('police', {
     {
         name    = 'open_vehicle_menu',
-        label   = 'Fahrzeug anpassen',
+        label   = 'Customize vehicle',
         icon    = 'fa-solid fa-spray-can',
         onSelect = function()
             exports['kt_extra_menu']:OpenVehicleMenu()
@@ -100,12 +100,12 @@ exports['ox_target']:addModel('police', {
 ```
 
 ```lua
--- Beispiel mit qb-target (clientseitig)
+-- Example with qb-target (client side)
 exports['qb-target']:AddTargetModel('police', {
     options = {
         {
             type   = 'client',
-            label  = 'Fahrzeug anpassen',
+            label  = 'Customize vehicle',
             icon   = 'fas fa-spray-can',
             action = function()
                 exports['kt_extra_menu']:OpenVehicleMenu()
@@ -117,5 +117,5 @@ exports['qb-target']:AddTargetModel('police', {
 ```
 
 <Tip>
-  Möchtest du das Livery-Menü und das Extras-Menü als **getrennte Interaktionen** anbieten? Verwende einfach `OpenLiveryMenu` und `OpenExtrasMenu` als separate Einträge in deiner Target-Konfiguration — so gelangst du mit einem Klick direkt ins gewünschte Untermenü.
+  Want to offer the livery menu and extras menu as **separate interactions**? Just use `OpenLiveryMenu` and `OpenExtrasMenu` as separate entries in your target configuration — that way, a single click takes you straight to the desired submenu.
 </Tip>

@@ -1,57 +1,64 @@
 ---
-title: "KT Extra Menu: Fahrzeug-Liveries & Extras für FiveM"
-sidebarTitle: "Einführung"
-description: "Liveries und Extras komfortabel per Menü verwalten: KT Extra Menu unterstützt ESX, QBCore, QBox und Standalone sowie ox_lib- und Lation-Menü-System."
+title: "KT Extra Menu: Vehicle Liveries & Extras for FiveM"
+sidebarTitle: "Introduction"
+description: "Manage liveries and extras conveniently through a menu: KT Extra Menu supports ESX, QBCore, QBox and Standalone, plus the ox_lib and Lation menu systems."
 ---
 
-KT Extra Menu ist ein leichtgewichtiges FiveM-Script von **Lation Scripts**, das Spielern eine komfortable Oberfläche bietet, um Fahrzeug-Liveries (Lackierungen) auszuwählen und Fahrzeug-Extras (z. B. Spoiler, Zusatzscheinwerfer, Sirenenleisten) ein- oder auszuschalten. Das Script unterstützt mehrere gängige Frameworks, zwei verschiedene Menü-Systeme und lässt sich durch eine übersichtliche `config.lua` vollständig anpassen.
+KT Extra Menu is a lightweight FiveM script by **Lation Scripts** that gives players a convenient interface to select vehicle liveries (paint jobs) and toggle vehicle extras (e.g. spoilers, additional lights, light bars). The script supports several popular frameworks, two different menu systems, and can be fully customized through a clean `config.lua`.
 
 ## Features
 
 <CardGroup cols={2}>
   <Card title="Multi-Framework Support" icon="layer-group">
-    Nativ kompatibel mit **ESX**, **QBCore**, **QBox** und **Standalone** – ohne zusätzliche Anpassungen am Quellcode.
+    Natively compatible with **ESX**, **QBCore**, **QBox** and **Standalone** – no source code modifications required.
   </Card>
-  <Card title="Zwei Menü-Systeme" icon="window">
-    Wähle zwischen dem weit verbreiteten **ox\_lib**-Menü und dem exklusiven **Lation Modern UI** für ein modernes, markeneigenes Erscheinungsbild.
+
+  <Card title="Two Menu Systems" icon="window">
+    Choose between the widely used **ox\_lib** menu and the exclusive **Lation Modern UI** for a modern, branded look.
   </Card>
+
   <Card title="Radial Menu Integration" icon="circle-dot">
-    Optionale Integration in ein **Radial Menu** – Spieler können das Menü direkt über das Radialmenü öffnen, ohne einen Befehl einzutippen.
+    Optional integration with a **Radial Menu** – players can open the menu directly from the radial menu without typing a command.
   </Card>
-  <Card title="Custom Livery-Namen" icon="tag">
-    Vergib jedem Livery einen individuellen, lesbaren Namen in der Konfiguration, anstatt nur numerische IDs anzuzeigen.
+
+  <Card title="Custom Livery Names" icon="tag">
+    Give each livery a custom, readable name in the configuration instead of only showing numeric IDs.
   </Card>
-  <Card title="Job-Einschränkungen" icon="briefcase">
-    Beschränke den Zugriff auf bestimmte **Jobs** (ESX/QBCore), sodass z. B. nur Polizisten oder Feuerwehrleute bestimmte Liveries wechseln dürfen.
+
+  <Card title="Job Restrictions" icon="briefcase">
+    Restrict access to specific **jobs** (ESX/QBCore) so that, for example, only police officers or firefighters can switch certain liveries.
   </Card>
-  <Card title="Mehrsprachig (DE / EN)" icon="language">
-    Mitgelieferte Locale-Dateien für **Deutsch** und **Englisch** – einfach erweiterbar für weitere Sprachen.
+
+  <Card title="Multilingual (DE / EN)" icon="language">
+    Bundled locale files for **German** and **English** – easily extendable to additional languages.
   </Card>
-  <Card title="Version-Check" icon="shield-check">
-    Automatischer **Versions-Check** beim Serverstart informiert Admins über verfügbare Updates, ohne den Spielbetrieb zu unterbrechen.
+
+  <Card title="Version Check" icon="shield-check">
+    Automatic **version check** on server start informs admins about available updates without interrupting gameplay.
   </Card>
+
   <Card title="Lua Exports" icon="code">
-    Öffne das Menü programmatisch aus anderen Scripts heraus über die bereitgestellten **Lua Exports** (`OpenVehicleMenu`, `OpenLiveryMenu`, `OpenExtrasMenu`) – ideal für Integrationen in eigene Ressourcen.
+    Open the menu programmatically from other scripts via the provided **Lua exports** (`OpenVehicleMenu`, `OpenLiveryMenu`, `OpenExtrasMenu`) – ideal for integrations into your own resources.
   </Card>
 </CardGroup>
 
-## Abhängigkeiten
+## Dependencies
 
-KT Extra Menu benötigt mindestens eine der folgenden Ressourcen, abhängig von deiner Menü-Wahl:
+KT Extra Menu requires at least one of the following resources, depending on your menu choice:
 
-| Ressource | Typ | Beschreibung |
-|---|---|---|
-| [ox_lib](https://github.com/overextended/ox_lib) | **Pflicht** | Basis-Bibliothek für Menüs, Benachrichtigungen und weitere Hilfsfunktionen. Muss vor `kt_extra_menu` gestartet werden. |
-| [Lation Scripts Modern UI](https://discord.gg/A6UgrEhc8G) | Optional | Alternatives, modernes Menü-Interface von Lation Scripts. Nur erforderlich, wenn `Config.MenuSystem = 'lation'` gesetzt ist. |
+| Resource | Type | Description |
+| --- | --- | --- |
+| [ox\_lib](https://github.com/overextended/ox_lib) | **Required** | Base library for menus, notifications and other helper functions. Must be started before `kt_extra_menu`. |
+| [Lation Scripts Modern UI](https://discord.gg/A6UgrEhc8G) | Optional | Alternative, modern menu interface by Lation Scripts. Only required when `Config.MenuSystem = 'lation'` is set. |
 
 <Note>
-  `ox_lib` ist in jedem Fall erforderlich, auch wenn du das Lation Modern UI als Menü-System verwendest, da das Script intern auf ox_lib-Funktionen zurückgreift.
+  `ox_lib` is always required, even when using the Lation Modern UI as the menu system, because the script relies internally on ox\_lib functions.
 </Note>
 
 ## Support & Community
 
-Bei Fragen, Fehlerberichten oder Feature-Wünschen stehe ich dir gerne im offiziellen Discord-Server von Lation Scripts zur Verfügung:
+For questions, bug reports or feature requests, feel free to reach out on the official Lation Scripts Discord server:
 
-**[Discord beitreten → discord.gg/A6UgrEhc8G](https://discord.gg/A6UgrEhc8G)**
+[**Join Discord → discord.gg/A6UgrEhc8G**](https://discord.gg/A6UgrEhc8G)
 
-Dort findest du den dedizierten Support-Kanal für KT Extra Menu, Ankündigungen zu Updates sowie eine aktive Community anderer FiveM-Entwickler und Server-Betreiber.
+There you will find the dedicated support channel for KT Extra Menu, update announcements, and an active community of other FiveM developers and server owners.

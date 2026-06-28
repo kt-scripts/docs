@@ -1,20 +1,20 @@
 ---
-title: "Radial Menu in KT Extra Menu integrieren und einrichten"
+title: "Integrate and configure a Radial Menu in KT Extra Menu"
 sidebarTitle: "Radial Menu"
-description: "Binde KT Extra Menu in ox_lib Radial oder qb-radialmenu ein. Das Radial Menu erscheint automatisch im Fahrzeug und ersetzt den Keybind."
+description: "Integrate KT Extra Menu with ox_lib Radial or qb-radialmenu. The radial menu entry appears automatically while in a vehicle and replaces the keybind."
 ---
 
-Mit der Radial Menu Integration erscheint der Eintrag für das Fahrzeugmenü automatisch im Radialmenü, sobald du als Fahrer in einem Fahrzeug sitzt – ohne dass du einen Keybind drücken oder einen Befehl eingeben musst. Das ist besonders dann sinnvoll, wenn dein Server bereits ein Radialmenü verwendet und du alle Fahrzeugaktionen an einem zentralen Ort bündeln möchtest. KT Extra Menu unterstützt sowohl **ox_lib Radial** als auch **qb-radialmenu**.
+With the Radial Menu integration, the entry for the vehicle menu appears automatically in the radial menu as soon as you sit in a vehicle as the driver – without having to press a keybind or type a command. This is especially useful when your server already uses a radial menu and you want to bundle all vehicle actions in one central place. KT Extra Menu supports both **ox\_lib Radial** and **qb-radialmenu**.
 
 <Note>
-  Sobald `Config.UseRadial = true` gesetzt ist, wird der in `Config.Keybind` konfigurierte Keybind automatisch deaktiviert. Das Menü kann dann nur noch über das Radialmenü oder den Chat-Befehl geöffnet werden.
+  As soon as `Config.UseRadial = true` is set, the keybind configured in `Config.Keybind` is automatically disabled. The menu can then only be opened via the radial menu or the chat command.
 </Note>
 
-## Einrichtung
+## Setup
 
 <Tabs>
   <Tab title="ox_lib Radial">
-    Verwende diese Konfiguration, wenn dein Server **ox_lib** als Radialmenü nutzt:
+    Use this configuration if your server uses **ox\_lib** as the radial menu:
 
     ```lua
     Config.UseRadial = true
@@ -22,7 +22,7 @@ Mit der Radial Menu Integration erscheint der Eintrag für das Fahrzeugmenü aut
     Config.RadialIcon = 'car'
     ```
 
-    Das Radialmenü-Element erscheint automatisch mit dem angegebenen FontAwesome-Icon, sobald der Spieler als Fahrer in einem Fahrzeug sitzt. Stelle sicher, dass `ox_lib` in deiner `server.cfg` vor `kt_extra_menu` gestartet wird.
+    The radial menu element appears automatically with the specified FontAwesome icon as soon as the player is in a vehicle as the driver. Make sure `ox_lib` is started before `kt_extra_menu` in your `server.cfg`.
 
     ```cfg
     ensure ox_lib
@@ -30,7 +30,7 @@ Mit der Radial Menu Integration erscheint der Eintrag für das Fahrzeugmenü aut
     ```
   </Tab>
   <Tab title="qb-radialmenu">
-    Verwende diese Konfiguration, wenn dein Server **qb-radialmenu** einsetzt:
+    Use this configuration if your server uses **qb-radialmenu**:
 
     ```lua
     Config.UseRadial = true
@@ -38,54 +38,54 @@ Mit der Radial Menu Integration erscheint der Eintrag für das Fahrzeugmenü aut
     Config.QBRadialId = 'vehiclecustomizer'
     ```
 
-    Der `QBRadialId`-Wert wird als eindeutige ID für den Eintrag in qb-radialmenu verwendet. Passe ihn bei Bedarf an, falls es zu Konflikten mit anderen Einträgen kommt.
+    The `QBRadialId` value is used as the unique ID for the entry in qb-radialmenu. Adjust it if needed in case of conflicts with other entries.
   </Tab>
 </Tabs>
 
-## Konfigurationsoptionen
+## Configuration options
 
-<ParamField path="Config.UseRadial" type="boolean" default="false">
-  Aktiviert die Radialmenü-Integration. Bei `true` wird der Keybind deaktiviert und das Menü erscheint stattdessen als Eintrag im Radialmenü.
+<ParamField path="Config.UseRadial" default="false" type="boolean">
+  Enables the radial menu integration. When `true`, the keybind is disabled and the menu appears as an entry in the radial menu instead.
 </ParamField>
 
-<ParamField path="Config.OxRadial" type="boolean" default="false">
-  Bestimmt, welches Radialmenü-System verwendet wird. Nur relevant, wenn `Config.UseRadial = true`.
+<ParamField path="Config.OxRadial" default="false" type="boolean">
+  Determines which radial menu system is used. Only relevant when `Config.UseRadial = true`.
 
-  | Wert | System |
-  |------|--------|
-  | `true` | ox_lib Radial Menu |
+  | Value | System |
+  | --- | --- |
+  | `true` | ox\_lib Radial Menu |
   | `false` | qb-radialmenu |
 </ParamField>
 
-<ParamField path="Config.RadialIcon" type="string" default="'car'">
-  Der Name des **FontAwesome**-Icons, das neben dem Menü-Eintrag im Radialmenü angezeigt wird. Nur relevant bei `Config.OxRadial = true`. Beispiele: `'car'`, `'wrench'`, `'paint-brush'`.
+<ParamField path="Config.RadialIcon" default="'car'" type="string">
+  The name of the **FontAwesome** icon displayed next to the menu entry in the radial menu. Only relevant when `Config.OxRadial = true`. Examples: `'car'`, `'wrench'`, `'paint-brush'`.
 </ParamField>
 
-<ParamField path="Config.QBRadialId" type="string" default="'vehiclecustomizer'">
-  Die eindeutige ID des Eintrags in qb-radialmenu. Nur relevant, wenn `Config.OxRadial = false`. Stelle sicher, dass diese ID auf deinem Server nicht doppelt vergeben ist.
+<ParamField path="Config.QBRadialId" default="'vehiclecustomizer'" type="string">
+  The unique ID of the entry in qb-radialmenu. Only relevant when `Config.OxRadial = false`. Make sure this ID is not duplicated on your server.
 </ParamField>
 
 ---
 
-## Wann erscheint der Radialmenü-Eintrag?
+## When does the radial menu entry appear?
 
-Der Eintrag wird nur unter folgenden Bedingungen eingeblendet:
+The entry is only shown under the following conditions:
 
-- Der Spieler sitzt **als Fahrer** im Fahrzeug (wenn `Config.OnlyDriver = true`).
-- Der Spieler hat den **erforderlichen Job** (wenn `Config.RequiredJob` nicht leer ist).
-- Das Skript ist korrekt gestartet und `Config.UseRadial = true`.
+- The player sits **as the driver** in the vehicle (if `Config.OnlyDriver = true`).
+- The player has the **required job** (if `Config.RequiredJob` is not empty).
+- The script is correctly started and `Config.UseRadial = true`.
 
-Verlässt der Spieler das Fahrzeug oder wechselt auf den Beifahrersitz, wird der Eintrag automatisch aus dem Radialmenü entfernt.
+If the player exits the vehicle or switches to the passenger seat, the entry is automatically removed from the radial menu.
 
 ---
 
-## Nur Befehl – kein Radial, kein Keybind
+## Command only – no radial, no keybind
 
-Wenn du weder ein Radialmenü noch einen Keybind verwenden möchtest und das Menü ausschließlich über den Chat-Befehl zugänglich sein soll, setze folgende Werte:
+If you don't want to use either a radial menu or a keybind and the menu should only be accessible via the chat command, use the following values:
 
 ```lua
 Config.UseRadial = false
 Config.Keybind = false
 ```
 
-Das Menü ist dann nur über `/vehiclemenu` (oder den in `Config.Command` konfigurierten Befehl) erreichbar.
+The menu is then only accessible via `/vehiclemenu` (or the command configured in `Config.Command`).

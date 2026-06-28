@@ -1,29 +1,29 @@
 ---
-title: "KT Extra Menu UI-Einstellungen für ox_lib und Lation UI"
-sidebarTitle: "UI-Einstellungen"
-description: "Passe Titel und Untertitel des Menüfensters in KT Extra Menu an und wähle zwischen ox_lib Context Menu und dem Lation Scripts Modern UI."
+title: "KT Extra Menu UI settings for ox_lib and Lation UI"
+sidebarTitle: "UI Settings"
+description: "Customize the title and subtitle of the menu window in KT Extra Menu and choose between the ox_lib context menu and the Lation Scripts Modern UI."
 ---
 
-KT Extra Menu unterstützt zwei Menü-Systeme: das weit verbreitete **ox_lib Context Menu** und das **Lation Scripts Modern UI** für ein ansprechenderes, moderneres Erscheinungsbild. Welches System du verwendest, hängt von den auf deinem Server installierten Ressourcen und deinen gestalterischen Vorlieben ab. Beide Systeme verwenden dieselben Konfigurationsoptionen für Zugangsbeschränkungen und Benachrichtigungen – lediglich das Erscheinungsbild und einige UI-spezifische Einstellungen unterscheiden sich.
+KT Extra Menu supports two menu systems: the widely used **ox\_lib context menu** and the **Lation Scripts Modern UI** for a more appealing, modern look. Which system you use depends on the resources installed on your server and your design preferences. Both systems use the same configuration options for access restrictions and notifications – only the look and some UI-specific settings differ.
 
-## Menü-System auswählen
+## Select menu system
 
 <Tabs>
-  <Tab title="ox_lib (Standard)">
-    Das **ox_lib Context Menu** ist die Standardoption und benötigt keine zusätzliche Installation, da `ox_lib` bereits eine Pflicht-Abhängigkeit von KT Extra Menu ist.
+  <Tab title="ox_lib (default)">
+    The **ox\_lib context menu** is the default option and does not require any additional installation, since `ox_lib` is already a mandatory dependency of KT Extra Menu.
 
     ```lua
     Config.MenuSystem = 'ox'
     ```
 
-    Benachrichtigungen werden über das integrierte `lib.notify`-System von ox_lib ausgegeben. Die Position der Benachrichtigungen lässt sich über `Config.Notifications.position` steuern:
+    Notifications are emitted via the built-in `lib.notify` system of ox\_lib. The position of notifications can be controlled via `Config.Notifications.position`:
 
-    | Wert | Bildschirmposition |
-    |------|-------------------|
-    | `'top-right'` | Oben rechts *(Standard)* |
-    | `'top-left'` | Oben links |
-    | `'bottom-right'` | Unten rechts |
-    | `'bottom-left'` | Unten links |
+    | Value | Screen position |
+    | --- | --- |
+    | `'top-right'` | Top right _(default)_ |
+    | `'top-left'` | Top left |
+    | `'bottom-right'` | Bottom right |
+    | `'bottom-left'` | Bottom left |
 
     ```lua
     Config.Notifications = {
@@ -33,22 +33,22 @@ KT Extra Menu unterstützt zwei Menü-Systeme: das weit verbreitete **ox_lib Con
     ```
   </Tab>
   <Tab title="Lation Modern UI">
-    Das **Lation Modern UI** bietet eine optisch aufgewertete Benutzeroberfläche mit eigenem Header und Subheader im Menüfenster.
+    The **Lation Modern UI** provides a visually enhanced user interface with its own header and subheader in the menu window.
 
     <Warning>
-      Lation Modern UI erfordert die separate Ressource **modernui** von Lation Scripts. Diese muss installiert und in der `server.cfg` gestartet sein, bevor `kt_extra_menu` geladen wird. Ohne diese Ressource führt `Config.MenuSystem = 'lation'` zu Fehlern.
+      Lation Modern UI requires the separate **modernui** resource by Lation Scripts. It must be installed and started in `server.cfg` before `kt_extra_menu` is loaded. Without this resource, `Config.MenuSystem = 'lation'` will cause errors.
     </Warning>
 
     ```lua
     Config.MenuSystem = 'lation'
-
+    
     Config.LationUI = {
         header = 'Vehicle Customization',
         subheader = 'Customize your vehicle',
     }
     ```
 
-    **Starte-Reihenfolge in `server.cfg`:**
+    **Startup order in `server.cfg`:**
 
     ```cfg
     ensure ox_lib
@@ -56,28 +56,28 @@ KT Extra Menu unterstützt zwei Menü-Systeme: das weit verbreitete **ox_lib Con
     ensure kt_extra_menu
     ```
 
-    <ParamField path="Config.LationUI.header" type="string" default="'Vehicle Customization'">
-      Großer Titeltext, der oben im Lation Modern UI Menüfenster angezeigt wird.
+    <ParamField path="Config.LationUI.header" default="'Vehicle Customization'" type="string">
+      Large title text displayed at the top of the Lation Modern UI menu window.
     </ParamField>
 
-    <ParamField path="Config.LationUI.subheader" type="string" default="'Customize your vehicle'">
-      Kleinerer Untertitel unterhalb des Haupttitels im Menüfenster. Eignet sich für eine kurze Beschreibung oder einen Server-Namen.
+    <ParamField path="Config.LationUI.subheader" default="'Customize your vehicle'" type="string">
+      Smaller subtitle below the main title in the menu window. Suitable for a short description or a server name.
     </ParamField>
   </Tab>
 </Tabs>
 
 ---
 
-## Benachrichtigungseinstellungen
+## Notification settings
 
-Die folgenden Optionen steuern das Aussehen und die Dauer von Benachrichtigungen. Sie gelten für beide Menü-Systeme, wobei die `position`-Option nur bei `Config.MenuSystem = 'ox'` berücksichtigt wird.
+The following options control the look and duration of notifications. They apply to both menu systems, although the `position` option is only considered when `Config.MenuSystem = 'ox'`.
 
-<ParamField path="Config.Notifications.duration" type="number" default="3000">
-  Anzeigedauer der Benachrichtigung in Millisekunden. `3000` entspricht 3 Sekunden. Erhöhe diesen Wert, wenn Spieler die Meldungen häufig verpassen.
+<ParamField path="Config.Notifications.duration" default="3000" type="number">
+  Display duration of the notification in milliseconds. `3000` equals 3 seconds. Increase this value if players frequently miss messages.
 </ParamField>
 
-<ParamField path="Config.Notifications.position" type="string" default="'top-right'">
-  Bildschirmposition der Benachrichtigungen. Nur wirksam bei `Config.MenuSystem = 'ox'`. Mögliche Werte: `'top-right'`, `'top-left'`, `'bottom-right'`, `'bottom-left'`.
+<ParamField path="Config.Notifications.position" default="'top-right'" type="string">
+  Screen position of notifications. Only effective when `Config.MenuSystem = 'ox'`. Possible values: `'top-right'`, `'top-left'`, `'bottom-right'`, `'bottom-left'`.
 </ParamField>
 
 ```lua

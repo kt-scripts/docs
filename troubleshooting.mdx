@@ -1,174 +1,172 @@
 ---
-title: "KT Extra Menu – Fehlerbehebung & häufige Probleme"
-sidebarTitle: "Fehlerbehebung"
-description: "Lösungen für häufige Probleme mit KT Extra Menu: Menü öffnet sich nicht, Liveries fehlen, Job-Beschränkungen greifen nicht und mehr."
+title: "KT Extra Menu – Troubleshooting & common issues"
+sidebarTitle: "Troubleshooting"
+description: "Solutions for common issues with KT Extra Menu: menu does not open, liveries missing, job restrictions not taking effect and more."
 ---
 
-Auf dieser Seite findest du Lösungen für die am häufigsten auftretenden Probleme mit **KT Extra Menu**. Gehe die passenden Abschnitte durch, bevor du im Support-Discord um Hilfe bittest – die meisten Probleme lassen sich schnell selbst beheben.
+On this page you'll find solutions for the most common issues with **KT Extra Menu**. Go through the relevant sections before asking for help on the support Discord – most problems can be resolved quickly yourself.
 
 <AccordionGroup>
+  <Accordion title="The menu does not open">
+    If the menu doesn't react after typing the command or pressing the keybind, check the following:
 
-  <Accordion title="Das Menü öffnet sich nicht">
-    Wenn das Menü nach dem Eingeben des Befehls oder dem Drücken des Keybinds keine Reaktion zeigt, prüfe folgende Punkte:
-
-    - **Bist du in einem Fahrzeug?** Das Menü funktioniert ausschließlich innerhalb eines Fahrzeugs.
-    - **Bist du der Fahrer?** Wenn `Config.OnlyDriver = true` gesetzt ist, darf nur der Fahrer des Fahrzeugs das Menü öffnen.
-    - **Hast du den erforderlichen Job?** Falls `Config.RequiredJob` befüllt ist, muss dein aktiver Job einem der eingetragenen Jobs entsprechen.
-    - **Ist `ox_lib` installiert und gestartet?** `ox_lib` ist eine Pflicht-Abhängigkeit und muss **vor** `kt_extra_menu` in der `server.cfg` gestartet werden:
+    - **Are you in a vehicle?** The menu only works inside a vehicle.
+    - **Are you the driver?** If `Config.OnlyDriver = true` is set, only the driver of the vehicle can open the menu.
+    - **Do you have the required job?** If `Config.RequiredJob` is populated, your active job must match one of the listed jobs.
+    - **Is `ox_lib` installed and started?** `ox_lib` is a mandatory dependency and must be started **before** `kt_extra_menu` in `server.cfg`:
 
     ```cfg
     ensure ox_lib
     ensure kt_extra_menu
     ```
 
-    - Überprüfe die **Server-Konsole** auf Fehlermeldungen, die direkt beim Start von `kt_extra_menu` ausgegeben werden.
+    - Check the **server console** for error messages emitted directly during the startup of `kt_extra_menu`.
   </Accordion>
 
-  <Accordion title="Befehl /vehiclemenu nicht gefunden">
-    Wenn der Chat-Befehl `/vehiclemenu` (oder der in `Config.Command` eingetragene Befehl) nicht existiert:
+  <Accordion title="Command /vehiclemenu not found">
+    If the chat command `/vehiclemenu` (or the command set in `Config.Command`) does not exist:
 
-    - Stelle sicher, dass die Ressource in deiner `server.cfg` korrekt eingetragen ist:
+    - Make sure the resource is correctly listed in your `server.cfg`:
 
     ```cfg
     ensure ox_lib
     ensure kt_extra_menu
     ```
 
-    - Der **Ordnername** der Ressource muss exakt dem Ressourcennamen entsprechen. Wenn der Ordner z. B. `KT-Extra-Menu` heißt, lautet der Eintrag:
+    - The **folder name** of the resource must exactly match the resource name. If the folder is, for example, called `KT-Extra-Menu`, the entry would be:
 
     ```cfg
     ensure KT-Extra-Menu
     ```
 
-    - Starte den Server neu und prüfe, ob die Ressource in der Konsole als gestartet gemeldet wird.
+    - Restart the server and check whether the resource is reported as started in the console.
   </Accordion>
 
-  <Accordion title="Liveries werden nicht angezeigt">
-    Das Menü zeigt den Hinweis **„Dieses Fahrzeug hat keine Liveries!"** – das ist kein Fehler, sondern das erwartete Verhalten für Fahrzeuge ohne Liveries.
+  <Accordion title="Liveries are not displayed">
+    The menu shows the message **"This vehicle has no liveries!"** – this is not an error, but the expected behavior for vehicles without liveries.
 
-    - **Nicht jedes Fahrzeug hat Liveries.** Teste das Menü mit einem Fahrzeug, das bekanntermaßen Liveries besitzt (z. B. `police`).
-    - **Benutzerdefinierte Livery-Namen:** Wenn du eigene Namen in `Config.CustomLiveryNames` vergibst, muss der Fahrzeugmodellname **kleingeschrieben** angegeben werden:
+    - **Not every vehicle has liveries.** Test the menu with a vehicle known to have liveries (e.g. `police`).
+    - **Custom livery names:** When assigning custom names in `Config.CustomLiveryNames`, the vehicle model name must be **lowercase**:
 
     ```lua
     Config.CustomLiveryNames = {
-        ['police'] = {       -- ✅ Korrekt: Kleinbuchstaben
-            [0] = 'LSPD Schwarz/Weiß',
+        ['police'] = {       -- ✅ Correct: lowercase
+            [0] = 'LSPD Black/White',
             [1] = 'LSPD Slicktop',
             [2] = 'Sheriff',
         },
-        -- ['POLICE'] = { ... }  ❌ Falsch: Großbuchstaben
+        -- ['POLICE'] = { ... }  ❌ Wrong: uppercase
     }
     ```
 
-    - Der Livery-Index beginnt bei `0`.
+    - The livery index starts at `0`.
   </Accordion>
 
-  <Accordion title="Extras werden nicht angezeigt">
-    Das Menü zeigt den Hinweis **„Dieses Fahrzeug hat keine Extras!"** – auch das ist erwartetes Verhalten.
+  <Accordion title="Extras are not displayed">
+    The menu shows the message **"This vehicle has no extras!"** – this is also expected behavior.
 
-    - **Nicht jedes Fahrzeug hat Extras.** KT Extra Menu scannt automatisch die Extra-Slots 0 bis 20. Sind keine vorhanden, wird der Hinweis angezeigt.
-    - Manche Fahrzeuge haben Extras nur in bestimmten Mods oder DLC-Varianten.
-    - Teste das Menü mit einem Fahrzeug, das nachweislich Extras besitzt, um zu prüfen, ob die Funktion grundsätzlich arbeitet.
+    - **Not every vehicle has extras.** KT Extra Menu automatically scans extra slots 0 to 20. If none exist, the message is shown.
+    - Some vehicles only have extras in certain mods or DLC variants.
+    - Test the menu with a vehicle known to have extras to verify that the feature works in principle.
   </Accordion>
 
-  <Accordion title="Job-Einschränkung greift nicht">
-    Wenn alle Spieler das Menü öffnen können, obwohl `Config.RequiredJob` gesetzt ist:
+  <Accordion title="Job restriction does not take effect">
+    If all players can open the menu even though `Config.RequiredJob` is set:
 
-    - Prüfe die **exakte Schreibweise** des Job-Namens – sie muss 1:1 mit dem Job-Namen in deinem Framework übereinstimmen (Groß-/Kleinschreibung beachten).
-    - Wenn `Config.Framework = 'standalone'` gesetzt ist, werden Job-Einschränkungen **grundsätzlich ignoriert**, da kein Framework-Kontext vorhanden ist.
-    - Stelle sicher, dass `Config.Framework` dem tatsächlich installierten Framework entspricht:
+    - Check the **exact spelling** of the job name – it must match 1:1 with the job name in your framework (case sensitive).
+    - When `Config.Framework = 'standalone'` is set, job restrictions are **generally ignored**, since there is no framework context.
+    - Make sure `Config.Framework` matches the framework actually installed:
 
     ```lua
-    -- Mögliche Werte: 'esx', 'qbcore', 'qbox', 'standalone'
+    -- Possible values: 'esx', 'qbcore', 'qbox', 'standalone'
     Config.Framework = 'esx'
     ```
   </Accordion>
 
-  <Accordion title="Keybind funktioniert nicht">
-    Wenn der konfigurierte Keybind (Standard: `F11`) keine Reaktion zeigt:
+  <Accordion title="Keybind does not work">
+    If the configured keybind (default: `F11`) doesn't respond:
 
-    - Der Keybind ist **nur aktiv, wenn `Config.UseRadial = false`** gesetzt ist. Wenn das Radial-Menü aktiviert ist, wird der Keybind automatisch deaktiviert.
-    - Überprüfe, ob `Config.Keybind` nicht auf `false` gesetzt wurde:
+    - The keybind is **only active when `Config.UseRadial = false`** is set. When the radial menu is enabled, the keybind is automatically disabled.
+    - Check that `Config.Keybind` is not set to `false`:
 
     ```lua
-    Config.Keybind = 'F11'   -- ✅ Keybind aktiv
-    -- Config.Keybind = false  -- ❌ Keybind deaktiviert
+    Config.Keybind = 'F11'   -- ✅ Keybind active
+    -- Config.Keybind = false  -- ❌ Keybind disabled
     ```
 
-    - Versuche, den Keybind in den **GTA V Einstellungen → Tastenbelegung** neu zu binden, falls er mit einem anderen Script kollidiert.
+    - Try rebinding the key in the **GTA V settings → Key bindings**, in case it conflicts with another script.
   </Accordion>
 
-  <Accordion title="Radial Menu Eintrag erscheint nicht">
-    Wenn der Eintrag im Radial-Menü fehlt:
+  <Accordion title="Radial menu entry does not appear">
+    If the entry is missing from the radial menu:
 
-    - `Config.UseRadial` muss auf `true` gesetzt sein:
+    - `Config.UseRadial` must be set to `true`:
 
     ```lua
     Config.UseRadial = true
     ```
 
-    - Du musst **im Fahrzeug sitzen**, damit der Eintrag erscheint.
-    - Wenn `Config.OnlyDriver = true`, muss du außerdem der **Fahrer** des Fahrzeugs sein.
-    - Prüfe, ob `Config.OxRadial` korrekt auf dein installiertes Radial-Menü-Resource zeigt:
+    - You must be **sitting in a vehicle** for the entry to appear.
+    - If `Config.OnlyDriver = true`, you must also be the **driver** of the vehicle.
+    - Check whether `Config.OxRadial` correctly points to your installed radial menu resource:
 
     ```lua
     Config.OxRadial = true   -- ox_lib Radial Menu
     -- Config.OxRadial = false  -- qb-radialmenu
     ```
 
-    - Bei Verwendung von `qb-radialmenu`: Stelle sicher, dass `Config.QBRadialId` eindeutig ist und nicht von einer anderen Ressource belegt wird.
+    - When using `qb-radialmenu`: Make sure `Config.QBRadialId` is unique and not used by another resource.
   </Accordion>
 
-  <Accordion title="Lation Modern UI funktioniert nicht">
-    Wenn das Menü beim Einsatz von Lation Modern UI leer bleibt oder gar nicht erscheint:
+  <Accordion title="Lation Modern UI does not work">
+    If the menu stays empty or does not appear at all when using Lation Modern UI:
 
-    - Die Ressource **`modernui`** (Lation Scripts Modern UI) muss installiert und in der `server.cfg` vor `kt_extra_menu` gestartet sein.
-    - Stelle sicher, dass `Config.MenuSystem` korrekt gesetzt ist:
+    - The resource **`modernui`** (Lation Scripts Modern UI) must be installed and started in `server.cfg` before `kt_extra_menu`.
+    - Make sure `Config.MenuSystem` is set correctly:
 
     ```lua
     Config.MenuSystem = 'lation'
     ```
 
-    - Prüfe die **Server-Konsole und die Browser-Konsole (F8)** auf Fehlermeldungen im Zusammenhang mit `modernui` oder `kt_extra_menu`.
-    - Die `Config.LationUI`-Einstellungen werden nur verwendet, wenn `Config.MenuSystem = 'lation'` aktiv ist:
+    - Check the **server console and the browser console (F8)** for error messages related to `modernui` or `kt_extra_menu`.
+    - The `Config.LationUI` settings are only used when `Config.MenuSystem = 'lation'` is active:
 
     ```lua
     Config.LationUI = {
-        header    = 'Fahrzeug Anpassung',
-        subheader = 'Passe dein Fahrzeug an',
+        header    = 'Vehicle Customization',
+        subheader = 'Customize your vehicle',
     }
     ```
   </Accordion>
 
-  <Accordion title="Versions-Check Fehler in der Konsole">
-    Wenn beim Serverstart eine Meldung wie `Version check currently disabled due to a GitHub issue` erscheint:
+  <Accordion title="Version check error in the console">
+    If a message like `Version check currently disabled due to a GitHub issue` appears on server start:
 
-    - Dies ist eine **nicht kritische Warnung**. Das Script konnte den externen Versions-Server (GitHub) nicht erreichen.
-    - Die **Funktionalität des Scripts wird dadurch nicht beeinträchtigt** – alle Features arbeiten normal weiter.
-    - Die Warnung kann auftreten, wenn GitHub vorübergehend nicht erreichbar ist oder der Server keinen ausgehenden HTTP-Zugriff hat.
-    - Der Versions-Check wiederholt sich automatisch alle 60 Minuten.
+    - This is a **non-critical warning**. The script was unable to reach the external version server (GitHub).
+    - The **functionality of the script is not affected** – all features continue to work normally.
+    - The warning may appear when GitHub is temporarily unreachable or the server has no outgoing HTTP access.
+    - The version check automatically retries every 60 minutes.
 
     <Note>
-      Wenn du den Versions-Check vollständig deaktivieren möchtest, wende dich an den Support-Discord. Beachte, dass du ohne aktiven Check keine automatischen Update-Hinweise mehr erhältst.
+      If you want to disable the version check entirely, please contact the support Discord. Note that without an active check you will no longer receive automatic update notices.
     </Note>
   </Accordion>
-
 </AccordionGroup>
 
 ---
 
 ## Support
 
-Wenn du dein Problem hier nicht gefunden hast oder weiterhin Hilfe benötigst, wende dich an den offiziellen Support-Discord:
+If you couldn't find your issue here or still need help, contact the official support Discord:
 
 <Card title="Lation Scripts Discord" icon="discord" href="https://discord.gg/A6UgrEhc8G">
-  Tritt dem Discord bei und öffne ein Support-Ticket im richtigen Kanal.
+  Join the Discord and open a support ticket in the appropriate channel.
 </Card>
 
 <Note>
-  Wenn du einen Bug meldest, füge bitte folgende Informationen bei, damit dir schnell geholfen werden kann:
+  When reporting a bug, please include the following information so you can be helped quickly:
 
-  - Den relevanten Ausschnitt deiner **`server.cfg`** (die `ensure`-Zeilen)
-  - Deine vollständige **`config.lua`**
-  - Alle **Fehlermeldungen** aus der Server-Konsole und/oder der Client-Konsole (F8)
+  - The relevant section of your **`server.cfg`** (the `ensure` lines)
+  - Your full **`config.lua`**
+  - All **error messages** from the server console and/or the client console (F8)
 </Note>

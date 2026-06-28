@@ -1,20 +1,20 @@
 ---
-title: "KT Extra Menu Quickstart: In 5 Minuten einsatzbereit"
+title: "KT Extra Menu Quickstart: Ready in 5 minutes"
 sidebarTitle: "Quickstart"
-description: "KT Extra Menu schnell einrichten: Framework und Menü-System konfigurieren, Befehl und Keybind festlegen, Server neustarten und das Menü im Spiel testen."
+description: "Set up KT Extra Menu quickly: configure framework and menu system, define command and keybind, restart the server and test the menu in game."
 ---
 
-Dieser Quickstart führt dich in wenigen Minuten von einer frischen Installation zu einem vollständig funktionierenden KT Extra Menu. Du wählst dein Framework, konfigurierst das Menü-System, legst Befehl und Keybind fest und testest das Script direkt im Spiel – ohne tiefes Vorwissen erforderlich.
+This quickstart takes you from a fresh installation to a fully working KT Extra Menu in just a few minutes. You select your framework, configure the menu system, set the command and keybind, and test the script directly in game – no deep prior knowledge required.
 
 <Tip>
-  Stelle sicher, dass du KT Extra Menu bereits installiert hast, bevor du mit diesem Quickstart beginnst. Falls nicht, folge zuerst der [Installationsanleitung](/installation).
+  Make sure KT Extra Menu is already installed before starting this quickstart. If not, follow the [installation guide](/installation) first.
 </Tip>
 
-## Schnellkonfiguration
+## Quick configuration
 
 <Tabs>
   <Tab title="ESX">
-    Minimale Konfiguration für ESX-Server:
+    Minimal configuration for ESX servers:
 
     ```lua
     Config.Framework  = 'esx'
@@ -22,94 +22,90 @@ Dieser Quickstart führt dich in wenigen Minuten von einer frischen Installation
     ```
   </Tab>
   <Tab title="QBCore / QBox">
-    Minimale Konfiguration für QBCore- und QBox-Server:
+    Minimal configuration for QBCore and QBox servers:
 
     ```lua
-    Config.Framework  = 'qbcore'   -- oder 'qbox' für QBox
+    Config.Framework  = 'qbcore'   -- or 'qbox' for QBox
     Config.MenuSystem = 'ox'
     ```
   </Tab>
 </Tabs>
 
-## Einrichtungsschritte
+## Setup steps
 
 <Steps>
-  <Step title="Framework wählen">
-    Öffne `resources/kt_extra_menu/config.lua` und setze `Config.Framework` auf das Framework deines Servers. Mögliche Werte:
+  <Step title="Select framework">
+    Open `resources/kt_extra_menu/config.lua` and set `Config.Framework` to the framework used by your server. Possible values:
 
     ```lua
-    -- Wähle eines der folgenden Frameworks:
+    -- Choose one of the following frameworks:
     Config.Framework = 'esx'        -- ESX
     Config.Framework = 'qbcore'     -- QBCore
     Config.Framework = 'qbox'       -- QBox
-    Config.Framework = 'standalone' -- Kein Framework (Vanilla FiveM)
+    Config.Framework = 'standalone' -- No framework (vanilla FiveM)
     ```
 
-    Bei `standalone` sind frameworkabhängige Features wie Job-Einschränkungen und Spieler-Benachrichtigungen über das Framework nicht verfügbar.
+    With `standalone`, framework-dependent features such as job restrictions and framework-based player notifications are not available.
   </Step>
-
-  <Step title="Menü-System wählen">
-    Lege fest, welches Menü-Interface die Spieler zu sehen bekommen. KT Extra Menu unterstützt zwei Systeme:
+  <Step title="Select menu system">
+    Decide which menu interface players will see. KT Extra Menu supports two systems:
 
     ```lua
-    Config.MenuSystem = 'ox'      -- ox_lib Kontext-Menü (Standard, empfohlen)
+    Config.MenuSystem = 'ox'      -- ox_lib context menu (default, recommended)
     Config.MenuSystem = 'lation'  -- Lation Scripts Modern UI
     ```
 
-    Das **Lation Modern UI** bietet ein visuell ansprechenderes Interface, erfordert aber eine separate Installation der Lation UI-Ressource (erhältlich über den [Lation Scripts Discord](https://discord.gg/A6UgrEhc8G)).
+    The **Lation Modern UI** offers a more visually appealing interface but requires a separate installation of the Lation UI resource (available via the [Lation Scripts Discord](https://discord.gg/A6UgrEhc8G)).
   </Step>
-
-  <Step title="Befehl und Keybind festlegen">
-    Bestimme, über welchen Chat-Befehl und welche Tastenkombination Spieler das Menü öffnen können:
+  <Step title="Set command and keybind">
+    Define the chat command and key combination players can use to open the menu:
 
     ```lua
-    Config.Command = 'vehiclemenu' -- Chat-Befehl: /vehiclemenu
-    Config.Keybind = 'F11'         -- Standard-Tastenbelegung (vom Spieler änderbar)
+    Config.Command = 'vehiclemenu' -- Chat command: /vehiclemenu
+    Config.Keybind = 'F11'         -- Default keybind (player-customizable)
     ```
 
-    Spieler können den Keybind jederzeit in den GTA V-Einstellungen unter **Tastenbelegung → FiveM** individuell anpassen.
+    Players can customize the keybind at any time in the GTA V settings under **Key bindings → FiveM**.
   </Step>
-
-  <Step title="Server neustarten">
-    Speichere die `config.lua` und starte den Server neu oder führe in der Serverkonsole aus:
+  <Step title="Restart server">
+    Save `config.lua` and restart the server, or run the following in the server console:
 
     ```cfg
     restart kt_extra_menu
     ```
 
-    Kontrolliere die Konsolenausgabe auf Fehler. Eine erfolgreiche Initialisierung wird durch eine Statusmeldung von KT Extra Menu bestätigt.
+    Check the console output for errors. A successful initialization is confirmed by a status message from KT Extra Menu.
   </Step>
+  <Step title="Test in game">
+    Connect to the server, get into a vehicle and open the menu in one of the following ways:
 
-  <Step title="Im Spiel testen">
-    Verbinde dich mit dem Server, steige in ein Fahrzeug und öffne das Menü auf eine der folgenden Arten:
+    - **Chat command:** type `/vehiclemenu` and confirm
+    - **Keybind:** press `F11` (default)
 
-    - **Chat-Befehl:** `/vehiclemenu` eingeben und bestätigen
-    - **Keybind:** `F11` drücken (Standard)
-
-    Das Menü zeigt dir alle verfügbaren Liveries sowie die konfigurierten Extras für das aktuell genutzte Fahrzeug an. Wähle eine Livery oder schalte ein Extra um – Änderungen werden sofort am Fahrzeug sichtbar.
+    The menu shows all available liveries as well as the configured extras for the currently used vehicle. Select a livery or toggle an extra – changes are immediately visible on the vehicle.
 
     <Tip>
-      Wenn `Config.OnlyDriver = true` gesetzt ist, können **nur Fahrer** das Menü öffnen. Beifahrer erhalten in diesem Fall eine Fehlermeldung. Stelle sicher, dass du auf dem Fahrersitz sitzt, wenn du das Script testest.
+      If `Config.OnlyDriver = true` is set, **only drivers** can open the menu. Passengers will receive an error message in this case. Make sure you're in the driver's seat when testing the script.
     </Tip>
   </Step>
 </Steps>
 
-## Häufige Probleme beim Quickstart
+## Common quickstart issues
 
-| Problem | Mögliche Ursache | Lösung |
-|---|---|---|
-| Menü öffnet sich nicht | `ox_lib` nicht gestartet oder falsche Startreihenfolge | Reihenfolge in `server.cfg` prüfen: `ensure ox_lib` vor `ensure kt_extra_menu` |
-| Befehl unbekannt | Script nicht korrekt gestartet | Konsolenausgabe auf Fehler prüfen; `restart kt_extra_menu` ausführen |
-| Liveries werden nicht angezeigt | Fahrzeug hat keine Liveries definiert | Livery-Einträge in `config.lua` für das betreffende Fahrzeugmodell eintragen |
-| Job-Check schlägt fehl | Falsches Framework gewählt | `Config.Framework` in `config.lua` auf das tatsächlich verwendete Framework setzen |
+| Issue | Possible cause | Solution |
+| --- | --- | --- |
+| Menu does not open | `ox_lib` not started or wrong startup order | Check order in `server.cfg`: `ensure ox_lib` before `ensure kt_extra_menu` |
+| Unknown command | Script did not start correctly | Check console output for errors; run `restart kt_extra_menu` |
+| Liveries are not displayed | Vehicle has no liveries defined | Add livery entries in `config.lua` for the relevant vehicle model |
+| Job check fails | Wrong framework selected | Set `Config.Framework` in `config.lua` to the framework actually in use |
 
-## Weiterführende Schritte
+## Further steps
 
-Sobald das Script grundlegend funktioniert, kannst du mit der detaillierten Konfiguration weitermachen:
+Once the script is working in principle, you can continue with the detailed configuration:
 
-- **Liveries konfigurieren** – Weise Fahrzeugmodellen Liveries mit eigenen Namen zu
-- **Job-Einschränkungen** – Begrenze den Zugriff auf bestimmte Jobs
-- **Sprache ändern** – Wechsel zwischen Deutsch und Englisch über `Config.Language`
-- **Exports nutzen** – Integriere KT Extra Menu in eigene Ressourcen über die Lua Exports (`OpenVehicleMenu`, `OpenLiveryMenu`, `OpenExtrasMenu`)
+- **Configure liveries** – assign liveries with custom names to vehicle models
+- **Job restrictions** – limit access to specific jobs
+- **Change language** – switch between German and English via `Config.Language`
+- **Use exports** – integrate KT Extra Menu into your own resources via the Lua exports (`OpenVehicleMenu`, `OpenLiveryMenu`, `OpenExtrasMenu`)
 
-Bei Fragen steht dir der [Lation Scripts Discord](https://discord.gg/A6UgrEhc8G) zur Verfügung.
+For questions, the [Lation Scripts Discord](https://discord.gg/A6UgrEhc8G) is at your disposal.

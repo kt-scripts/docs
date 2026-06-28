@@ -1,79 +1,59 @@
 ---
-title: "KT Extra Menu Changelog – Alle Versionen im Überblick"
+title: "KT Extra Menu Changelog – All versions at a glance"
 sidebarTitle: "Changelog"
-description: "Vollständiger Changelog für KT Extra Menu: alle Neuerungen, Verbesserungen und Bugfixes jeder Version. Aktuelle stabile Version: 1.0.0."
+description: "Complete changelog for KT Extra Menu: all new features, improvements and bug fixes of every version. Current stable version: 1.0.0."
 ---
 
-Hier findest du eine vollständige Übersicht aller Versionen von **KT Extra Menu** – mit allen Neuerungen, Verbesserungen und Fehlerbehebungen. Die aktuellste Version steht immer ganz oben.
+Here you'll find a complete overview of all versions of **KT Extra Menu** – with all new features, improvements and bug fixes. The most recent version is always at the top.
 
 <Note>
-  KT Extra Menu prüft beim Serverstart automatisch, ob eine neuere Version verfügbar ist, und gibt einen entsprechenden Hinweis in der Server-Konsole aus. Der Check erfolgt alle 60 Minuten wiederholt. Stelle sicher, dass dein Server ausgehende HTTP-Verbindungen erlaubt, damit diese Funktion korrekt arbeitet.
+  KT Extra Menu automatically checks on server start whether a newer version is available and prints a corresponding notice in the server console. The check is repeated every 60 minutes. Make sure your server allows outgoing HTTP connections for this feature to work correctly.
 </Note>
 
 ---
 
 ## Version 1.0.0
 
-**Erstveröffentlichung** — Initiales Release von KT Extra Menu.
+**Initial release** — first release of KT Extra Menu.
 
-### ✨ Neue Funktionen
+### ✨ New features
 
-- **Multi-Framework-Unterstützung**
-  Volle Kompatibilität mit **ESX**, **QBCore**, **QBox** und **Standalone**. Das Framework wird einmalig in `Config.Framework` konfiguriert.
-
-- **Zwei Menüsysteme: ox\_lib & Lation Modern UI**
-  Wähle zwischen dem ox\_lib Context Menu (`Config.MenuSystem = 'ox'`) und dem optionalen Lation Scripts Modern UI (`Config.MenuSystem = 'lation'`). Beide Systeme bieten eine saubere, performante Oberfläche.
-
-- **Radial-Menü-Integration**
-  Nahtlose Integration in das **ox\_lib Radial Menu** sowie in das **qb-radialmenu**. Umschaltbar über `Config.UseRadial` und `Config.OxRadial`.
-
-- **Benutzerdefinierte Livery-Namen**
-  Vergib eigene Bezeichnungen für Liveries einzelner Fahrzeugmodelle direkt in der Konfiguration. Der Modellname muss in Kleinbuchstaben angegeben werden:
-
+- **Multi-framework support** Full compatibility with **ESX**, **QBCore**, **QBox** and **Standalone**. The framework is configured once in `Config.Framework`.
+- **Two menu systems: ox\_lib & Lation Modern UI** Choose between the ox\_lib context menu (`Config.MenuSystem = 'ox'`) and the optional Lation Scripts Modern UI (`Config.MenuSystem = 'lation'`). Both systems offer a clean, performant interface.
+- **Radial menu integration** Seamless integration with the **ox\_lib Radial Menu** and **qb-radialmenu**. Switchable via `Config.UseRadial` and `Config.OxRadial`.
+- **Custom livery names** Assign custom labels for liveries of individual vehicle models directly in the configuration. The model name must be specified in lowercase:
   ```lua
   Config.CustomLiveryNames = {
       ['police'] = {
-          [0] = 'LSPD Schwarz/Weiß',
+          [0] = 'LSPD Black/White',
           [1] = 'LSPD Slicktop',
           [2] = 'Sheriff',
       },
       ['ambulance'] = {
           [0] = 'Los Santos Medical',
-          [1] = 'Feuerwehr',
+          [1] = 'Fire Department',
       },
   }
   ```
-
-- **Job-Einschränkungen**
-  Beschränke den Zugriff auf das Menü auf bestimmte Jobs. Kompatibel mit allen unterstützten Frameworks. Bei `standalone` werden Job-Checks übersprungen:
-
+- **Job restrictions** Restrict access to the menu to specific jobs. Compatible with all supported frameworks. With `standalone`, job checks are skipped:
   ```lua
   Config.RequiredJob = { 'mechanic', 'police' }
   ```
-
-- **Mehrsprachigkeit (Deutsch & Englisch)**
-  Sprache umschaltbar per `Config.Language = 'de'` oder `'en'`. Alle Menütexte und Benachrichtigungen sind vollständig übersetzt.
-
-- **Automatischer Versions-Check**
-  Beim Serverstart wird automatisch die neueste Version abgefragt. Ist ein Update verfügbar, erscheint ein farbiger Hinweis in der Server-Konsole mit der aktuellen und der neuesten Versionsnummer sowie einem Download-Link.
-
-- **Lua Exports für externe Scripts**
-  Die aktuelle Skriptversion kann über einen Export abgerufen werden:
-
+- **Multilingual (German & English)** Language switchable via `Config.Language = 'de'` or `'en'`. All menu texts and notifications are fully translated.
+- **Automatic version check** On server start, the latest version is automatically queried. If an update is available, a colored notice appears in the server console with the current and latest version numbers as well as a download link.
+- **Lua exports for external scripts** The current script version can be retrieved via an export:
   ```lua
   local version = exports['kt_extra_menu']:GetVersion()
   print('KT Extra Menu Version: ' .. version)
   ```
-
-- **Leichtgewichtig und optimiert**
-  Das Script läuft ressourcenschonend und verursacht keine spürbaren Performance-Einbußen. Extras werden automatisch in den Slots 0–20 gescannt.
+- **Lightweight and optimized** The script runs resource-friendly and causes no noticeable performance hit. Extras are scanned automatically in slots 0–20.
 
 ---
 
-## Support & Updates
+## Support & updates
 
-Bleib über neue Versionen informiert und erhalte Support im offiziellen Discord:
+Stay informed about new versions and get support on the official Discord:
 
 <Card title="Lation Scripts Discord" icon="discord" href="https://discord.gg/A6UgrEhc8G">
-  Tritt dem Discord bei für Support, Update-Ankündigungen und Community-Austausch.
+  Join the Discord for support, update announcements and community exchange.
 </Card>

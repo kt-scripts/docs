@@ -1,16 +1,16 @@
 ---
-title: "Eigene Livery-Namen für Fahrzeugmodelle in KT Extra Menu"
-sidebarTitle: "Livery-Namen"
-description: "Vergib benutzerdefinierte Namen für Lackierungen in KT Extra Menu. Livery-Index beginnt bei 0, Modellnamen müssen in Kleinbuchstaben angegeben werden."
+title: "Custom livery names for vehicle models in KT Extra Menu"
+sidebarTitle: "Livery Names"
+description: "Assign custom names for paint jobs in KT Extra Menu. The livery index starts at 0; model names must be specified in lowercase."
 ---
 
-Standardmäßig zeigt KT Extra Menu den vom Spiel intern gespeicherten Namen einer Lackierung an. Mit `Config.CustomLiveryNames` kannst du für jedes Fahrzeugmodell eigene, aussagekräftige Namen vergeben – zum Beispiel um Dienstfahrzeuge klar zu kennzeichnen oder Lackierungen im Rollenspiel-Kontext verständlich zu benennen. Die benutzerdefinierten Namen erscheinen in der Livery-Auswahl des Menüs anstelle der spielinternen Bezeichnungen.
+By default, KT Extra Menu shows the internal name of a paint job stored by the game. With `Config.CustomLiveryNames` you can assign custom, meaningful names for each vehicle model – for example to clearly label service vehicles or to name liveries in a way that makes sense in roleplay. The custom names appear in the livery selection of the menu instead of the in-game labels.
 
 <Note>
-  Modellnamen müssen in **Kleinbuchstaben** angegeben werden (z. B. `'police'`, nicht `'POLICE'`). Der Livery-Index beginnt bei **0** für die erste Lackierung.
+  Model names must be specified in **lowercase** (e.g. `'police'`, not `'POLICE'`). The livery index starts at **0** for the first paint job.
 </Note>
 
-## Konfigurationsbeispiel
+## Configuration example
 
 ```lua
 Config.CustomLiveryNames = {
@@ -26,24 +26,24 @@ Config.CustomLiveryNames = {
 }
 ```
 
-Füge für jedes Fahrzeugmodell einen eigenen Block hinzu. Die Schlüssel sind Modellnamen, die Werte sind Tabellen aus Index-Nummern und zugehörigen Bezeichnungen.
+Add a separate block for each vehicle model. The keys are model names, the values are tables of index numbers and the associated labels.
 
-## Fallback-Logik
+## Fallback logic
 
-KT Extra Menu verwendet folgende Priorität bei der Anzeige von Lackierungsnamen:
+KT Extra Menu uses the following priority when displaying livery names:
 
-1. **Eigener Name** aus `Config.CustomLiveryNames` (höchste Priorität)
-2. **Spielinterner Livery-Name**, sofern das Fahrzeugmodell einen solchen besitzt
-3. **Fallback-Label** `Livery N` (wobei `N` der Index plus 1 ist), wenn weder ein eigener noch ein spielinterner Name vorhanden ist
+1. **Custom name** from `Config.CustomLiveryNames` (highest priority)
+2. **In-game livery name**, if the vehicle model has one
+3. **Fallback label** `Livery N` (where `N` is the index plus 1) if neither a custom nor an in-game name is available
 
-Du musst also nicht für jede Lackierung einen Namen vergeben – nur dort, wo du eine individuelle Bezeichnung benötigst.
+So you don't have to assign a name to every paint job – only where you need a custom label.
 
 <Tip>
-  Den Modellnamen eines Fahrzeugs findest du am einfachsten, indem du im Spiel in das Fahrzeug einsteigst und in der F8-Konsole `print(GetEntityModel(GetVehiclePedIsIn(PlayerPedId(), false)))` ausführst – oder du schlägst ihn direkt in der Vehicle-Datenbank deines Frameworks nach. Modellnamen müssen immer in **Kleinbuchstaben** in der Config eingetragen werden, z. B. `'police'`, `'ambulance'`, `'firetruck'`.
+  The easiest way to find a vehicle's model name is to get into the vehicle in game and run `print(GetEntityModel(GetVehiclePedIsIn(PlayerPedId(), false)))` in the F8 console – or look it up directly in your framework's vehicle database. Model names must always be entered in **lowercase** in the config, e.g. `'police'`, `'ambulance'`, `'firetruck'`.
 </Tip>
 
-## Fahrzeug-Extras
+## Vehicle extras
 
-Neben Liveries unterstützt KT Extra Menu auch **Fahrzeug-Extras** (z. B. Spoiler, Lichtbalken, Zusatzteile). Diese werden **vollautomatisch** erkannt – das Skript prüft die Extras 0 bis 20 und zeigt alle verfügbaren Extras im Menü an.
+In addition to liveries, KT Extra Menu also supports **vehicle extras** (e.g. spoilers, light bars, additional parts). These are detected **fully automatically** – the script checks extras 0 to 20 and shows all available extras in the menu.
 
-Es ist **keine manuelle Konfiguration** für Extras erforderlich. Verfügbare Extras werden dynamisch für das aktuell genutzte Fahrzeug geladen und können direkt im Menü unter dem Reiter **Extras** ein- und ausgeschaltet werden.
+**No manual configuration** for extras is required. Available extras are loaded dynamically for the currently used vehicle and can be toggled on and off directly in the menu under the **Extras** tab.

@@ -14,10 +14,10 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Dokumentation",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Einstieg",
+            "group": "Get Started",
             "pages": [
               "introduction",
               "installation",
@@ -25,7 +25,7 @@
             ]
           },
           {
-            "group": "Konfiguration",
+            "group": "Configuration",
             "pages": [
               "configuration/basic",
               "configuration/radial-menu",
@@ -34,7 +34,7 @@
             ]
           },
           {
-            "group": "Verwendung",
+            "group": "Usage",
             "pages": [
               "usage/commands",
               "usage/job-restrictions",
@@ -42,7 +42,7 @@
             ]
           },
           {
-            "group": "Hilfe",
+            "group": "Help",
             "pages": [
               "troubleshooting",
               "changelog"
