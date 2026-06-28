@@ -22,7 +22,8 @@
               "introduction",
               "installation",
               "quickstart"
-            ]
+            ],
+            "icon": "rocket"
           },
           {
             "group": "Configuration",
@@ -31,7 +32,8 @@
               "configuration/radial-menu",
               "configuration/livery-names",
               "configuration/ui-settings"
-            ]
+            ],
+            "icon": "gear"
           },
           {
             "group": "Usage",
@@ -39,16 +41,19 @@
               "usage/commands",
               "usage/job-restrictions",
               "usage/exports"
-            ]
+            ],
+            "icon": "code"
           },
           {
             "group": "Help",
             "pages": [
               "troubleshooting",
               "changelog"
-            ]
+            ],
+            "icon": "circle-question"
           }
-        ]
+        ],
+        "icon": "car"
       }
     ]
   },
