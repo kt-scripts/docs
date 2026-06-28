@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "Lation Scripts",
+  "name": "KT Scripts",
   "theme": "almond",
   "colors": {
     "primary": "#da3433",
@@ -12,42 +12,54 @@
     "default": "dark"
   },
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "Documentation",
-        "groups": [
+        "language": "en",
+        "tabs": [
           {
-            "group": "Get Started",
-            "pages": [
-              "introduction",
-              "installation",
-              "quickstart"
-            ]
-          },
-          {
-            "group": "Configuration",
-            "pages": [
-              "configuration/basic",
-              "configuration/radial-menu",
-              "configuration/livery-names",
-              "configuration/ui-settings"
-            ]
-          },
-          {
-            "group": "Usage",
-            "pages": [
-              "usage/commands",
-              "usage/job-restrictions",
-              "usage/exports"
-            ]
-          },
-          {
-            "group": "Help",
-            "pages": [
-              "troubleshooting",
-              "changelog"
+            "tab": "KT Extra Menu",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "introduction",
+                  "installation",
+                  "quickstart"
+                ]
+              },
+              {
+                "group": "Configuration",
+                "pages": [
+                  "configuration/basic",
+                  "configuration/radial-menu",
+                  "configuration/livery-names",
+                  "configuration/ui-settings"
+                ]
+              },
+              {
+                "group": "Usage",
+                "pages": [
+                  "usage/commands",
+                  "usage/job-restrictions",
+                  "usage/exports"
+                ]
+              },
+              {
+                "group": "Help",
+                "pages": [
+                  "troubleshooting",
+                  "changelog"
+                ]
+              }
             ]
           }
+        ]
+      },
+      {
+        "language": "de",
+        "pages": [
+          "de/index.mdx",
+          ""
         ]
       }
     ]
@@ -56,6 +68,20 @@
     "primary": {
       "type": "github",
       "href": "https://github.com/kt-scripts"
-    }
+    },
+    "links": [
+      {
+        "href": "https://github.com/kt-scripts",
+        "label": "Store"
+      },
+      {
+        "href": "https://discord.gg/",
+        "label": "Discord"
+      },
+      {
+        "href": "https://youtube.com",
+        "label": "YouTube"
+      }
+    ]
   }
 }

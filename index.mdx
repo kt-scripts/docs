@@ -1,66 +1,72 @@
 ---
-title: "KT Extra Menu – FiveM Fahrzeug-Anpassung"
-sidebarTitle: "Startseite"
-description: "Willkommen bei der Dokumentation für KT Extra Menu – das FiveM Script für Livery-Auswahl und Extras-Verwaltung direkt im Spiel."
+title: "KT Scripts Documentation"
+sidebarTitle: "Home"
+description: "Official documentation for all KT Scripts resources for FiveM. Browse our scripts, follow setup guides and get help."
+mode: "custom"
 ---
 
-KT Extra Menu ist ein FiveM-Script von Lation Scripts, mit dem Spieler auf deinem Server ihre Fahrzeuglackierungen (Liveries) auswählen und Fahrzeug-Extras (Anbauteile) ein- oder ausschalten können. Das Script unterstützt ESX, QBCore, QBox und Standalone-Server und lässt sich in wenigen Minuten installieren.
+<div className="relative isolate overflow-hidden">
+  <div className="mx-auto max-w-6xl px-6 pt-16 pb-10 text-center">
+    <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+      KT Scripts <span className="text-[#da3433]">Documentation</span>
+    </h1>
 
-<CardGroup cols={2}>
-  <Card title="Installation" icon="download" href="/installation">
-    Lade das Script herunter und füge es in deinen Server ein – in 5 einfachen Schritten.
-  </Card>
-  <Card title="Quickstart" icon="rocket" href="/quickstart">
-    Komm schnell zum Laufen: Framework wählen, Menü-System konfigurieren, fertig.
-  </Card>
-  <Card title="Konfiguration" icon="sliders" href="/configuration/basic">
-    Alle Config-Optionen – von Framework-Auswahl bis Job-Einschränkungen.
-  </Card>
-  <Card title="Lua Exports" icon="code" href="/usage/exports">
-    Rufe das Menü aus anderen Scripts heraus auf mit den bereitgestellten Exports.
-  </Card>
-</CardGroup>
+    <p className="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+      High quality, optimized and feature rich FiveM scripts. Pick a resource below to view its installation guide, configuration reference and usage examples.
+    </p>
+  </div>
+</div>
 
-## Schnellübersicht
+<div className="mx-auto max-w-6xl px-6 pb-16">
+  ## Our Scripts
 
-<CardGroup cols={3}>
-  <Card title="Multi-Framework" icon="layer-group">
-    ESX, QBCore, QBox und Standalone werden alle unterstützt.
-  </Card>
-  <Card title="Zwei Menü-Systeme" icon="window-restore">
-    ox_lib Context Menu oder Lation Modern UI – du hast die Wahl.
-  </Card>
-  <Card title="Radial Menu" icon="circle-dot">
-    Integration für ox_lib Radial und qb-radialmenu inklusive.
-  </Card>
-  <Card title="Job-Einschränkungen" icon="shield-halved">
-    Beschränke den Zugriff auf bestimmte Jobs wie Mechanic oder Police.
-  </Card>
-  <Card title="Custom Livery-Namen" icon="tag">
-    Vergib eigene Namen für Lackierungen pro Fahrzeugmodell.
-  </Card>
-  <Card title="Mehrsprachig" icon="language">
-    Deutsch und Englisch sind out-of-the-box enthalten.
-  </Card>
-</CardGroup>
+  <CardGroup cols={3}>
+    <Card title="KT Extra Menu" icon="car" href="/introduction" color="#da3433">
+      Vehicle liveries & extras menu for FiveM. Supports ESX, QBCore, QBox and Standalone with ox\_lib and Lation UI.
+    </Card>
 
-## Nächste Schritte
+    <Card title="More coming soon" icon="sparkles" href="https://github.com/kt-scripts">
+      Stay tuned – additional KT Scripts resources will be documented here soon.
+    </Card>
 
-<Steps>
-  <Step title="Script herunterladen">
-    Lade das Script herunter und entpacke es in deinen `resources`-Ordner.
-  </Step>
-  <Step title="In server.cfg eintragen">
-    Füge `ensure kt_extra_menu` in deine `server.cfg` ein.
-  </Step>
-  <Step title="config.lua anpassen">
-    Wähle dein Framework, Menü-System und weitere Einstellungen in der `config.lua`.
-  </Step>
-  <Step title="Server neu starten">
-    Starte deinen Server neu und teste das Script im Spiel mit `/vehiclemenu`.
-  </Step>
-</Steps>
+    <Card title="GitHub" icon="github" href="https://github.com/kt-scripts">
+      Browse the source code, open issues and follow releases on GitHub.
+    </Card>
+  </CardGroup>
 
-<Note>
-  Bei Fragen oder Problemen stehe ich im [Discord](https://discord.gg/A6UgrEhc8G) zur Verfügung.
-</Note>
+  ## Get Started
+
+  <CardGroup cols={2}>
+    <Card title="Quickstart" icon="rocket" href="/quickstart">
+      Get a script up and running on your server in 5 minutes.
+    </Card>
+
+    <Card title="Installation" icon="download" href="/installation">
+      Step-by-step instructions for installing KT Scripts.
+    </Card>
+
+    <Card title="Configuration" icon="sliders" href="/configuration/basic">
+      Configure framework, language, menu system and more.
+    </Card>
+
+    <Card title="Troubleshooting" icon="life-ring" href="/troubleshooting">
+      Solutions for common issues and error messages.
+    </Card>
+  </CardGroup>
+
+  ## Community & Support
+
+  <CardGroup cols={3}>
+    <Card title="Discord" icon="discord" href="https://discord.gg/">
+      Join our community for support, updates and discussions.
+    </Card>
+
+    <Card title="Store" icon="cart-shopping" href="https://github.com/kt-scripts">
+      Browse and purchase KT Scripts resources.
+    </Card>
+
+    <Card title="YouTube" icon="youtube" href="https://youtube.com">
+      Watch tutorials, showcases and feature demos.
+    </Card>
+  </CardGroup>
+</div>
