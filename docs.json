@@ -20,6 +20,7 @@
             "group": "Get Started",
             "pages": [
               "index",
+              "changelog",
               "escrow-errors",
               "general-faqs"
             ],
