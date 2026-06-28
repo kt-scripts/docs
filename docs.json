@@ -12,54 +12,42 @@
     "default": "dark"
   },
   "navigation": {
-    "languages": [
+    "tabs": [
       {
-        "language": "en",
-        "tabs": [
+        "tab": "KT Extra Menu",
+        "groups": [
           {
-            "tab": "KT Extra Menu",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": [
-                  "introduction",
-                  "installation",
-                  "quickstart"
-                ]
-              },
-              {
-                "group": "Configuration",
-                "pages": [
-                  "configuration/basic",
-                  "configuration/radial-menu",
-                  "configuration/livery-names",
-                  "configuration/ui-settings"
-                ]
-              },
-              {
-                "group": "Usage",
-                "pages": [
-                  "usage/commands",
-                  "usage/job-restrictions",
-                  "usage/exports"
-                ]
-              },
-              {
-                "group": "Help",
-                "pages": [
-                  "troubleshooting",
-                  "changelog"
-                ]
-              }
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "installation",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Configuration",
+            "pages": [
+              "configuration/basic",
+              "configuration/radial-menu",
+              "configuration/livery-names",
+              "configuration/ui-settings"
+            ]
+          },
+          {
+            "group": "Usage",
+            "pages": [
+              "usage/commands",
+              "usage/job-restrictions",
+              "usage/exports"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "troubleshooting",
+              "changelog"
             ]
           }
-        ]
-      },
-      {
-        "language": "de",
-        "pages": [
-          "de/index.mdx",
-          ""
         ]
       }
     ]
